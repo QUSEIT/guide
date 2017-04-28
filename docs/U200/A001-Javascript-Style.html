@@ -1,0 +1,1849 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript 编码规范指南 &mdash; QPython 0.9 documentation</title>
+<link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
+<link rel="top" title="QPython 0.9 documentation" href="../index.html"/>
+<link rel="up" title="APP小组" href="../guide.html"/>
+<link rel="prev" title="初级Python开发工程师需要掌握" href="W002-What-should-pyer-know.html"/>
+<script src="../static/js/modernizr.min.js"></script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav data-toggle="wy-nav-shift" class="wy-nav-side">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a href="../index.html" class="icon icon-home"> QPython
+</a>
+<div class="version">
+0.9
+</div>
+<div role="search">
+<form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+<input type="text" name="q" placeholder="Search docs" />
+<input type="hidden" name="check_keywords" value="yes" />
+<input type="hidden" name="area" value="default" />
+</form>
+</div>
+</div>
+<div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../guide.html">APP小组</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../guide.html#id1">200小组</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="W002-What-should-pyer-know.html">初级Python开发工程师需要掌握</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">JavaScript 编码规范指南</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">参考规范</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">基本原则</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">目录</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">前言</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">项目约定</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">项目规范</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build">前端资源Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">规范详情</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">JavaScript 编码风格</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id33">};</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id38">};</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id57">};</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id64">};</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id85">}</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id90">});</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id95">}</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id140">}</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id147">};</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id164">};</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id171">};</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id178">};</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id185">};</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guide.html#id2">技术支持</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+<nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+<i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+<a href="../index.html">QPython</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div role="navigation" aria-label="breadcrumbs navigation">
+<ul class="wy-breadcrumbs">
+<li><a href="../index.html">Docs</a> &raquo;</li>
+<li><a href="../guide.html">APP小组</a> &raquo;</li>
+<li>JavaScript 编码规范指南</li>
+<li class="wy-breadcrumbs-aside">
+<a href="../_sources/U200/A001-Javascript-Style.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+<div itemprop="articleBody">
+<div class="section" id="javascript">
+<h1>JavaScript 编码规范指南<a class="headerlink" href="#javascript" title="Permalink to this headline">¶</a></h1>
+<p>以下文档大多来自:
+* [Google JavaScript 编码规范指南](<a class="reference external" href="http://wyz.67ge.com/google-js/javascriptguide.xml">http://wyz.67ge.com/google-js/javascriptguide.xml</a>)
+* [Idiomatic 风格](<a class="reference external" href="https://github.com/rwldrn/idiomatic.js/tree/master/translations/zh_CN">https://github.com/rwldrn/idiomatic.js/tree/master/translations/zh_CN</a>)</p>
+<div class="section" id="id1">
+<h2>参考规范<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>[ECMAScript 5.1 注解版](<a class="reference external" href="http://es5.github.com/">http://es5.github.com/</a>)</li>
+<li>[EcmaScript 语言规范, 5.1 版](<a class="reference external" href="http://ecma-international.org/ecma-262/5.1/">http://ecma-international.org/ecma-262/5.1/</a>)</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>基本原则<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>无论有多少人在维护，所有在代码仓库中的代码理应看起来像同一个人写的。</p>
+</div>
+<div class="section" id="id3">
+<h2>目录<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id4">
+<h2>前言<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>下面的章节描述的是一个 _合理_ 的现代 JavaScript 开发风格指南，并非硬性规定。其想送出的核心理念是*高度统一的代码风格*（the law of code style consistency）。你为项目所择风格都应为最高准则。作为一个描述放置于你的项目中，并链接到这个文档作为代码风格一致性、可读性和可维护性的保证。</p>
+</div>
+<div class="section" id="id5">
+<h2>项目约定<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id6">
+<h2>项目规范<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>JS/CSS 文件编码统一采用 UTF8编码</li>
+<li>代码缩进使用4个空格缩进替代 tab 缩进</li>
+<li>一行代码长度尽量保持80列左右</li>
+<li>如果编辑器支持在文件保存的时候自动删除行末和空行中的空格(注意:要么全部采用，要么全不采用，否则会产生过多的diff信息)</li>
+<li>JS/CSS 最终发布到产品中的时候需要被压缩，以减小静态资源文件大小，提升页面加载速度</li>
+<li>JS里声明变量必须加上 var 关键字，推荐一个 var 同时声明多个变量，或者一组有逻辑关系的变量，避免一个变量一个 var.</li>
+<li>使用 Array 和 Object 语法直接声明并将其初始化,更易读且性能更好, 而不使用 Array 和 Object 构造器.</li>
+<li>JS里使用单引号 (&#8216;) 优于双引号 (&#8221;).</li>
+<li>JS代码结尾统一约定加&#8217;;&#8217;</li>
+<li>JSON对象的最后一个字段、数组最后一个元素后面都不能加&#8217;,&#8217;,在IE8下会报错：所以{a:1,b:2,}/[1,2,] 都是不对的.</li>
+<li>没有特殊原因避免使用 with/eval</li>
+<li>对于if/else等后面的语句即使只有一行代码也需要在该行代码的首尾加上&#8217;{}&#8217;. 对于switch语句要给出&#8217;default:&#8217;情况的处理逻辑.</li>
+<li>字符串拼接在少量(次数为个位数)的情况下可以使用&#8217;+&#8217;, 大量的时候使用数组 join(), 或者尽可能采用模板引擎渲染：比如jsRender等, 如果是Extjs可以采用XTemplate.</li>
+<li>对于数组赋值操作快于 push()操作, 所以尽量使用赋值操作.</li>
+<li>for循环遍历：for(var i = 0, l = arr.length; i &lt; l; i++){// doSomething here } 采用这种方式而不是 i &lt; arr.length, 前一种方式只会计算一次 arr 的长度，而后一种方式会计算数组长度 arr.length + 1 次，效率比较低</li>
+<li>字符串转换为整数，推荐使用 parseInt(num, 10) 这种方式，+num 写法简单，在操作次数极少的情况下也可以酌情使用。</li>
+<li>变量比较的时候总是判断最好、最精确的值，推荐使用&#8217;===&#8217;少用&#8217;==&#8217;(可以参考[jQuery](<a class="reference external" href="https://github.com/jquery/jquery/blob/master/src/core.js">https://github.com/jquery/jquery/blob/master/src/core.js</a>)代码里面, 可以看到只有在&#8217;== null&#8217;的时候才可能使用&#8217;==&#8217;，其他情况一律使用的是&#8217;===&#8217;).</li>
+<li>JS里变量命名规范使用 functionNamesLikeThis, variableNamesLikeThis, ClassNamesLikeThis, EnumNamesLikeThis, methodNamesLikeThis, 和 SYMBOLIC_CONSTANTS_LIKE_THIS, 尤其不要跟python里面的变量命名方式混淆了.</li>
+<li>JS模块里面私有的方法前面可以加&#8217;_&#8217;,公有方法不加，但是函数内的局部变量就没必要加&#8217;_&#8217;了；</li>
+<li>JS文件名应该使用小写字符, 以避免在有些系统平台上不识别大小写的命名方式. 文件名以.js结尾, 不要包含除 &#8216;-&#8216; 和 &#8216;_&#8217; 外的标点符号(使用 &#8216;-&#8216; 优于 &#8216;_&#8217;), 我们约定统一使用js-file-name.js这种类型，对于template文件命名方式为 template_name.html形式.</li>
+<li>所有的html DOM里面的id, Extjs配置项里面的id 以及所有样式里面的 class命名使用中划线，如&#8217;id-name&#8217;/&#8217;class-name&#8217;.</li>
+<li>代表jQuery对象的变量前面可以加个&#8217;$&#8217;,这样一眼就能看出来是个jQuery对象。</li>
+<li>这几篇文章要好好读下——[jQuery最佳实践](<a class="reference external" href="http://www.ruanyifeng.com/blog/2011/08/jquery_best_practices.html">http://www.ruanyifeng.com/blog/2011/08/jquery_best_practices.html</a>)、[Coding Standards &amp; Best Practices](<a class="reference external" href="http://lab.abhinayrathore.com/jquery-standards/">http://lab.abhinayrathore.com/jquery-standards/</a>)</li>
+<li>jQuery事件绑定:优先使用on/off绑定或者解除绑定事件，因为从jQuery 1.7以后.bind(), .delegate() 都是调用 on 的, live和die已经废弃了；</li>
+<li>HTML DOM节点上原则上不允许有内嵌的style，样式要尽可能抽出来共用。有些样式定义可以成为全局的，比如字体颜色、大小之类的；有些样式不能公用则应当给相应的页面一个class命名空间，任何针对这个页面的样式都应该在这个命名空间下面定义，这样不至于影响到其他页面。</li>
+<li>公共的js第三方类库放在static/js/common/lib下，jQuery相关类库放在static/js/common/lib/jQplugin下，我们自己开发的公共类库放在static/js/common下</li>
+<li>鉴于有很多代码是复制粘贴过来的，所以大家要保证自己的代码风格良好且易于阅读，不然别人拷过去后不好的风格就蔓延开了，而且会导致其他人效仿。</li>
+<li>对于复制粘贴然后做相应修改以实现功能的代码，请务必清理干净，不要有&#8217;忘了删除的不影响逻辑的代码&#8217;，同时记得将变量名改成适合当前业务场景的有意义的变量名, 不要因为不影响逻辑就保留原来的不适合当前场景的名字</li>
+<li>对于系统中出现的大段注释的、过时的、废弃的代码务必及时清理干净，谁制造谁清理，否则其他人也不敢清理，越积越多</li>
+<li>不要使用魔法数字，尽量定义一个常量来表示该数字，并加上相应的注释，否则后期可能出现因为数字变化而导致牵一发而动全身，需要到处修改，增加维护成本</li>
+<li>注释尽量采用jsdoc的代码注释风格，普通业务代码不做要求，不过通用js类库要求尽量详尽以方便其他人阅读使用</li>
+<li>在开发相应功能的时候尽量抽象化、组件化、通用化：考虑这个东西其他地方会不会用到，能不能做成一个组件？而不是类似的代码到处复制、修改或者让大家都去写一遍</li>
+<li>类似地，在解决问题的时候要考虑下其他地方会不会存在同样的问题？能不能统一解决掉？尤其对于类似ExtJs的Bug这种，能不能做最少的改动解决所有同样的问题,类似于全局补丁.</li>
+<li>代码风格跟其他JS文件的代码风格保持一致</li>
+<li>代码提交前用JSHint检查一下，可以通过 grunt check 命令来执行检查，grunt具体配置可以参考[文档](<a class="reference external" href="http://pha.hzdiv.qizhitech.com/w/guides/grunt_build/">http://pha.hzdiv.qizhitech.com/w/guides/grunt_build/</a>)</li>
+<li>另外补充一点：减少不必要的代码嵌套, 比如以下代码：</li>
+</ul>
+<dl class="docutils">
+<dt>javascript</dt>
+<dd><dl class="first docutils">
+<dt>function(){</dt>
+<dd><dl class="first docutils">
+<dt>if(condition){</dt>
+<dd>// Block A: Do something here</dd>
+<dt>}else{</dt>
+<dd>// Block B: A lot of things to do here</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+</dl>
+<p>}</p>
+<p class="last">可以考虑改成如下形式, 将相对简单的逻辑放在if块里面，执行完毕后立即返回，复杂的逻辑放在外面：</p>
+</dd>
+</dl>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">function</span><span class="p">(){</span>
+<span class="k">if</span><span class="p">(</span><span class="n">condition</span><span class="p">){</span>
+<span class="o">//</span> <span class="n">Block</span> <span class="n">A</span><span class="p">:</span> <span class="n">Do</span> <span class="n">something</span> <span class="n">here</span>
+<span class="k">return</span> <span class="n">false</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">//</span> <span class="n">Block</span> <span class="n">B</span><span class="p">:</span> <span class="n">A</span> <span class="n">lot</span> <span class="n">of</span> <span class="n">things</span> <span class="n">to</span> <span class="n">do</span> <span class="n">here</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="build">
+<h2>前端资源Build<a class="headerlink" href="#build" title="Permalink to this headline">¶</a></h2>
+<p>项目必须总是提供一些通用的方法来检验（can be linted）、测试和压缩源码以为产品阶段使用做准备。对于此类工作 Ben Alman 所写的 [grunt](<a class="reference external" href="https://github.com/cowboy/grunt">https://github.com/cowboy/grunt</a>) 可谓首屈一指。通过简单的配置即可完成自动对CSS进行检查/压缩/合并，对JS进行检查/压缩/合并，对html文件进行压缩，删除创建目录，拷贝文件，压缩打包等，十分方便。
+参考的grunt配置文件:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/**</span>
+</pre></div>
+</div>
+<blockquote>
+<div><ul class="simple">
+<li>Grunt file for front end resource check/minify/compress.</li>
+<li>Date      : 2013/07/23</li>
+<li>copyright : (c) 2013 by QiZhi.</li>
+</ul>
+<p><a href="#id7"><span class="problematic" id="id8">*</span></a>/</p>
+</div></blockquote>
+<p>module.exports = function(grunt) {</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>grunt.initConfig({</dt>
+<dd><p class="first">pkg: grunt.file.readJSON(&#8216;package.json&#8217;),
+jshint: {</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>options: {</dt>
+<dd><p class="first">asi       : true,
+curly     : false,
+eqeqeq    : true,
+immed     : false,
+latedef   : true,
+newcap    : true,
+noarg     : true,
+sub       : true,
+undef     : true,
+boss      : true,
+eqnull    : true,
+smarttabs : true,
+browser   : true,
+jquery    : true,
+white     : false,
+laxbreak  : false,
+laxcomma  : true,
+expr      : true,
+devel     : false,
+globals   : {</p>
+<blockquote>
+<div>module    : true,
+Mousetrap : true,
+jQuery    : true</div></blockquote>
+<p class="last">}</p>
+</dd>
+</dl>
+<p>},
+all: [&#8216;Gruntfile.js&#8217;, &#8216;js/<strong>/*.js&#8217;, &#8216;!js/</strong>/<a href="#id9"><span class="problematic" id="id10">*</span></a>.min.js&#8217;, &#8216;!js/json2.js&#8217;, &#8216;!js/jquery.simplemodal.js&#8217;]</p>
+</div></blockquote>
+<p>},
+clean: {</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>release: {</dt>
+<dd>src: [&#8216;release/&#8217;]</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>},
+uglify: {</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>options: {</dt>
+<dd>banner: &#8216;/<a href="#id11"><span class="problematic" id="id12">*</span></a>! &lt;%= pkg.description %&gt;  Ver: &lt;%= pkg.version %&gt;  Date: &lt;%= grunt.template.today(&#8220;yyyy/mm/dd HH:MM:ss&#8221;) %&gt; <a href="#id13"><span class="problematic" id="id14">*</span></a>/n&#8217;</dd>
+</dl>
+<p>},
+dist: {</p>
+<blockquote>
+<div><p>// Grunt will search for &#8220;<a href="#id15"><span class="problematic" id="id16">**</span></a>/?.js&#8221; under &#8220;js/&#8221; when the &#8220;uglify&#8221; task
+// runs and build the appropriate src-dest file mappings then, so you
+// don&#8217;t need to update the Gruntfile when files are added or removed.
+files: [</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>{</dt>
+<dd>expand : true,                                  // Enable dynamic expansion.
+cwd    : &#8216;js/&#8217;,                                 // Src matches are relative to this path.
+src    : [&#8216;jquery.simplemodal.js&#8217;,&#8217;index.js&#8217;],  // Actual pattern(s) to match.
+dest   : &#8216;release/js/&#8217;                          // Destination path prefix.
+// ext : &#8216;.js&#8217;                                  // Dest filepaths will have this extension. &#8216;.min.js&#8217; is recommeded.</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>]</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>},
+cssmin: {</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>minify: {</dt>
+<dd>expand : true,
+cwd    : &#8216;style/&#8217;,
+src    : [&#8216;<a href="#id17"><span class="problematic" id="id18">*</span></a>.css&#8217;],
+dest   : &#8216;release/style/&#8217;,
+ext    : &#8216;.css&#8217;</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>},
+htmlmin: {                                       // Task</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>dist: {                                      // Target</dt>
+<dd><dl class="first docutils">
+<dt>options: {                                 // Target options</dt>
+<dd>removeComments: true,
+collapseWhitespace: true</dd>
+</dl>
+<p>},
+files: {                                   // Dictionary of files</p>
+<blockquote>
+<div>&#8216;release/index.html&#8217;: &#8216;index.html&#8217;       // &#8216;destination&#8217;: &#8216;source&#8217;</div></blockquote>
+<p class="last">}</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>},
+copy: {</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>main: {</dt>
+<dd><dl class="first docutils">
+<dt>files: [</dt>
+<dd>{expand: true, cwd: &#8216;.&#8217;, src: [&#8216;js/<em>.min.js&#8217;, &#8216;js/json2.js&#8217;, &#8216;images/</em>&#8216;], dest: &#8216;release/&#8217;}</dd>
+</dl>
+<p class="last">]</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>},
+compress: {</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>main: {</dt>
+<dd><dl class="first docutils">
+<dt>options: {</dt>
+<dd>archive: &#8216;release/executable.zip&#8217;         // make a zipfile</dd>
+</dl>
+<p>},
+files: [</p>
+<blockquote>
+<div>// {src: [&#8216;release/<strong>&#8216;], dest: &#8216;release/&#8217;},                        // includes files in path and its subdirs
+{expand: true, cwd: &#8216;release/&#8217;, src: [&#8216;</strong>&#8216;], dest: &#8216;executable/&#8217;}  // makes all src relative to cwd</div></blockquote>
+<p class="last">]</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p class="last">}</p>
+</dd>
+</dl>
+<p>});</p>
+<p>grunt.loadNpmTasks(&#8216;grunt-contrib-jshint&#8217;);
+grunt.loadNpmTasks(&#8216;grunt-contrib-clean&#8217;);
+grunt.loadNpmTasks(&#8216;grunt-contrib-uglify&#8217;);
+grunt.loadNpmTasks(&#8216;grunt-contrib-cssmin&#8217;);
+grunt.loadNpmTasks(&#8216;grunt-contrib-htmlmin&#8217;);
+grunt.loadNpmTasks(&#8216;grunt-contrib-copy&#8217;);
+grunt.loadNpmTasks(&#8216;grunt-contrib-compress&#8217;);</p>
+<p>grunt.registerTask(&#8216;min&#8217;    , [&#8216;clean&#8217;, &#8216;uglify&#8217;, &#8216;cssmin&#8217;, &#8216;htmlmin&#8217;, &#8216;copy&#8217;, &#8216;compress&#8217;]);
+grunt.registerTask(&#8216;check&#8217;  , [&#8216;jshint&#8217;]);
+grunt.registerTask(&#8216;default&#8217;, [&#8216;jshint&#8217;, &#8216;clean&#8217;, &#8216;uglify&#8217;, &#8216;cssmin&#8217;, &#8216;htmlmin&#8217;, &#8216;copy&#8217;, &#8216;compress&#8217;]);</p>
+</div></blockquote>
+<p>};</p>
+</div>
+<div class="section" id="id19">
+<h2>规范详情<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id20">
+<h2>JavaScript 编码风格<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h2>
+<p>##### 空白</p>
+<blockquote>
+<div><ul class="simple">
+<li>永远都不要混空格和Tab。</li>
+<li><dl class="first docutils">
+<dt>开始一个项目，在写代码之前，选择软缩进（空格）或者 Tab（作为缩进方式），并将其作为**最高准则**。</dt>
+<dd><ul class="first last">
+<li>为了可读, 我总是推荐在你的编辑中设计4个字母宽度的缩进 &amp;mdash; 这等同于四个空格或者四个空格替代一个 Tab。</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>如果你的编辑器支持，请总是打开 “显示不可见字符” 这个设置。好处是：</dt>
+<dd><ul class="first last">
+<li>保证一致性</li>
+<li>去掉行末的空格</li>
+<li>去掉空行的空格</li>
+<li>提交和对比更具可读性</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<p>##### 行末和空行</p>
+<p>留白会破坏 diff 并使diff 结果变得更不可读。考虑包括一个预提交的 hook 自动删除行末和空行中的空格。</p>
+<p>##### 花括号, 换行</p>
+<p><a href="#id21"><span class="problematic" id="id22">``</span></a><a href="#id23"><span class="problematic" id="id24">`</span></a>javascript</p>
+<blockquote>
+<div><p>// if/else/for/while/try 通常都有小括号、花括号和多行
+// 这有助于可读, 以下是很糟糕的写法</p>
+<p>if(condition) doSomething();</p>
+<p>while(condition) iterating++;</p>
+<p>for(var i=0;i&lt;100;i++) someIterativeFn();</p>
+</div></blockquote>
+<p><a href="#id25"><span class="problematic" id="id26">``</span></a><a href="#id27"><span class="problematic" id="id28">`</span></a></p>
+<p>##### 命名</p>
+<p>通常, 使用 functionNamesLikeThis, variableNamesLikeThis, ClassNamesLikeThis, EnumNamesLikeThis, methodNamesLikeThis, 和 SYMBOLIC_CONSTANTS_LIKE_THIS.</p>
+<p>###### 属性和方法</p>
+<p>文件或类中的 私有 属性, 变量和方法名应该以下划线 &#8220;_&#8221; 开头.
+保护 属性, 变量和方法名不需要下划线开头, 和公共变量名一样.</p>
+<p>###### 方法和函数参数</p>
+<p>可选参数以 <a href="#id496"><span class="problematic" id="id497">opt_</span></a> 开头.</p>
+<p>函数的参数个数不固定时, 应该添加最后一个参数 var_args 为参数的个数. 你也可以不设置 var_args而取代使用 arguments.</p>
+<p>可选和可变参数应该在 &#64;param 标记中说明清楚. 虽然这两个规定对编译器没有任何影响, 但还是请尽量遵守</p>
+<p>###### Getters 和 Setters</p>
+<p>Getters 和 setters 并不是必要的. 但只要使用它们了, 就请将 getters 命名成 getFoo() 形式, 将 setters 命名成 setFoo(value) 形式. (对于布尔类型的 getters, 使用 isFoo() 也可.)</p>
+<p>##### 命名空间</p>
+<p>JavaScript 不支持包和命名空间.
+不容易发现和调试全局命名的冲突, 多个系统集成时还可能因为命名冲突导致很严重的问题. 为了提高 JavaScript 代码复用率, 我们遵循下面的约定以避免冲突.</p>
+<p>###### 为全局代码使用命名空间</p>
+<p>在全局作用域上, 使用一个唯一的, 与工程/库相关的名字作为前缀标识. 比如, 你的工程是 &#8220;Project Sloth&#8221;, 那么命名空间前缀可取为 sloth.*.</p>
+<p><a href="#id29"><span class="problematic" id="id30">``</span></a><a href="#id31"><span class="problematic" id="id32">`</span></a>javascript
+var sloth = {};</p>
+<dl class="docutils">
+<dt>sloth.sleep = function() {</dt>
+<dd>...</dd>
+</dl>
+<div class="section" id="id33">
+<h3>};<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h3>
+<p>许多 JavaScript 库, 包括 the Closure Library and Dojo toolkit 为你提供了声明你自己的命名空间的函数. 比如:</p>
+<p><a href="#id34"><span class="problematic" id="id35">``</span></a><a href="#id36"><span class="problematic" id="id37">`</span></a>javascript
+goog.provide(&#8216;sloth&#8217;);</p>
+<dl class="docutils">
+<dt>sloth.sleep = function() {</dt>
+<dd>...</dd>
+</dl>
+</div>
+<div class="section" id="id38">
+<h3>};<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
+<p>###### 明确命名空间所有权</p>
+<p>当选择了一个子命名空间, 请确保父命名空间的负责人知道你在用哪个子命名空间, 比如说, 你为工程 &#8216;sloths&#8217; 创建一个 &#8216;hats&#8217; 子命名空间, 那确保 Sloth 团队人员知道你在使用 sloth.hats.</p>
+<p>###### 外部代码和内部代码使用不同的命名空间</p>
+<p>&#8220;外部代码&#8221; 是指来自于你代码体系的外部, 可以独立编译. 内外部命名应该严格保持独立. 如果你使用了外部库, 他的所有对象都在 foo.hats.* 下, 那么你自己的代码不能在 foo.hats.*下命名, 因为很有可能其他团队也在其中命名.</p>
+<p><a href="#id39"><span class="problematic" id="id40">``</span></a><a href="#id41"><span class="problematic" id="id42">`</span></a>javascript
+foo.require(&#8216;foo.hats&#8217;);</p>
+<dl class="docutils">
+<dt>/**</dt>
+<dd><ul class="first simple">
+<li>WRONG &#8211; Do NOT do this.</li>
+<li>&#64;constructor</li>
+<li>&#64;extend {foo.hats.RoundHat}</li>
+</ul>
+<p class="last"><a href="#id43"><span class="problematic" id="id44">*</span></a>/</p>
+</dd>
+</dl>
+<p>foo.hats.BowlerHat = function() {
+};
+<a href="#id45"><span class="problematic" id="id46">``</span></a><a href="#id47"><span class="problematic" id="id48">`</span></a></p>
+<p>##### 重命名那些名字很长的变量, 提高可读性</p>
+<p>主要是为了提高可读性. 局部空间中的变量别名只需要取原名字的最后部分.</p>
+<p><a href="#id49"><span class="problematic" id="id50">``</span></a><a href="#id51"><span class="problematic" id="id52">`</span></a>javascript
+/**</p>
+<blockquote>
+<div><ul class="simple">
+<li>&#64;constructor</li>
+</ul>
+<p><a href="#id53"><span class="problematic" id="id54">*</span></a>/</p>
+</div></blockquote>
+<p>some.long.namespace.MyClass = function() {
+};</p>
+<dl class="docutils">
+<dt>/**</dt>
+<dd><ul class="first simple">
+<li>&#64;param {some.long.namespace.MyClass} a</li>
+</ul>
+<p class="last"><a href="#id55"><span class="problematic" id="id56">*</span></a>/</p>
+</dd>
+<dt>some.long.namespace.MyClass.staticHelper = function(a) {</dt>
+<dd>...</dd>
+</dl>
+<p>};</p>
+<dl class="docutils">
+<dt>myapp.main = function() {</dt>
+<dd>var MyClass = some.long.namespace.MyClass;
+var staticHelper = some.long.namespace.MyClass.staticHelper;
+staticHelper(new MyClass());</dd>
+</dl>
+</div>
+<div class="section" id="id57">
+<h3>};<a class="headerlink" href="#id57" title="Permalink to this headline">¶</a></h3>
+<p>##### 除非是枚举类型, 不然不要访问别名变量的属性.</p>
+<p><a href="#id58"><span class="problematic" id="id59">``</span></a><a href="#id60"><span class="problematic" id="id61">`</span></a>javascript
+/** &#64;enum {string} <a href="#id62"><span class="problematic" id="id63">*</span></a>/
+some.long.namespace.Fruit = {</p>
+<blockquote>
+<div>APPLE: &#8216;a&#8217;,
+BANANA: &#8216;b&#8217;</div></blockquote>
+<p>};</p>
+<dl class="docutils">
+<dt>myapp.main = function() {</dt>
+<dd><p class="first">var Fruit = some.long.namespace.Fruit;
+switch (fruit) {</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>case Fruit.APPLE:</dt>
+<dd>...</dd>
+<dt>case Fruit.BANANA:</dt>
+<dd>...</dd>
+</dl>
+</div></blockquote>
+<p class="last">}</p>
+</dd>
+</dl>
+<p>};
+myapp.main = function() {</p>
+<blockquote>
+<div>var MyClass = some.long.namespace.MyClass;
+MyClass.staticHelper(null);</div></blockquote>
+</div>
+<div class="section" id="id64">
+<h3>};<a class="headerlink" href="#id64" title="Permalink to this headline">¶</a></h3>
+<p>不要在全局范围内创建别名, 而仅在函数块作用域中使用.</p>
+<p>##### 文件名</p>
+<p>文件名应该使用小写字符, 以避免在有些系统平台上不识别大小写的命名方式. 文件名以.js结尾, 不要包含除 - 和 _ 外的标点符号(使用 - 优于 _).</p>
+<p>##### 自定义 toString() 方法</p>
+<p>应该总是成功调用且不要抛异常.
+可自定义 toString() 方法, 但确保你的实现方法满足: (1) 总是成功 (2) 没有其他负面影响. 如果不满足这两个条件, 那么可能会导致严重的问题, 比如, 如果 toString() 调用了包含 assert 的函数, assert 输出导致失败的对象, 这在 toString() 也会被调用.</p>
+<p>##### 延迟初始化</p>
+<p>可以
+没必要在每次声明变量时就将其初始化.</p>
+<p>##### 明确作用域</p>
+<p>任何时候都需要
+任何时候都要明确作用域 - 提高可移植性和清晰度. 例如, 不要依赖于作用域链中的 window 对象. 可能在其他应用中, 你函数中的 window 不是指之前的那个窗口对象.</p>
+<p>##### 代码格式化</p>
+<p>###### 大括号</p>
+<p>分号会被隐式插入到代码中, 所以你务必在同一行上插入大括号. 例如:</p>
+<dl class="docutils">
+<dt><a href="#id65"><span class="problematic" id="id66">``</span></a><a href="#id67"><span class="problematic" id="id68">`</span></a>javascript</dt>
+<dd><dl class="first docutils">
+<dt>if (something) {</dt>
+<dd>// ...</dd>
+<dt>} else {</dt>
+<dd>// ...</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+</dl>
+<p><a href="#id69"><span class="problematic" id="id70">``</span></a><a href="#id71"><span class="problematic" id="id72">`</span></a></p>
+<p>###### 数组和对象的初始化</p>
+<p>如果初始值不是很长, 就保持写在单行上:</p>
+<p><code class="docutils literal"><span class="pre">`javascript</span>
+<span class="pre">var</span> <span class="pre">arr</span> <span class="pre">=</span> <span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3];</span>&nbsp; <span class="pre">//</span> <span class="pre">No</span> <span class="pre">space</span> <span class="pre">after</span> <span class="pre">[</span> <span class="pre">or</span> <span class="pre">before</span> <span class="pre">].</span>
+<span class="pre">var</span> <span class="pre">obj</span> <span class="pre">=</span> <span class="pre">{a:</span> <span class="pre">1,</span> <span class="pre">b:</span> <span class="pre">2,</span> <span class="pre">c:</span> <span class="pre">3};</span>&nbsp; <span class="pre">//</span> <span class="pre">No</span> <span class="pre">space</span> <span class="pre">after</span> <span class="pre">{</span> <span class="pre">or</span> <span class="pre">before</span> <span class="pre">}.</span>
+<span class="pre">`</span></code></p>
+<p>初始值占用多行时, 缩进2个空格.</p>
+<p><a href="#id73"><span class="problematic" id="id74">``</span></a><a href="#id75"><span class="problematic" id="id76">`</span></a>javascript
+// Object initializer.
+var inset = {</p>
+<blockquote>
+<div>top: 10,
+right: 20,
+bottom: 15,
+left: 12</div></blockquote>
+<p>};</p>
+<p>// Array initializer.
+<a href="#id498"><span class="problematic" id="id499">this.rows_</span></a> = [</p>
+<blockquote>
+<div>&#8216;&#8220;Slartibartfast&#8221; &lt;<a class="reference external" href="mailto:fjordmaster&#37;&#52;&#48;magrathea&#46;com">fjordmaster<span>&#64;</span>magrathea<span>&#46;</span>com</a>&gt;&#8217;,
+&#8216;&#8220;Zaphod Beeblebrox&#8221; &lt;<a class="reference external" href="mailto:theprez&#37;&#52;&#48;universe&#46;gov">theprez<span>&#64;</span>universe<span>&#46;</span>gov</a>&gt;&#8217;,
+&#8216;&#8220;Ford Prefect&#8221; &lt;<a class="reference external" href="mailto:ford&#37;&#52;&#48;theguide&#46;com">ford<span>&#64;</span>theguide<span>&#46;</span>com</a>&gt;&#8217;,
+&#8216;&#8220;Arthur Dent&#8221; &lt;<a class="reference external" href="mailto:has&#46;no&#46;tea&#37;&#52;&#48;gmail&#46;com">has<span>&#46;</span>no<span>&#46;</span>tea<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;&#8217;,
+&#8216;&#8220;Marvin the Paranoid Android&#8221; &lt;<a class="reference external" href="mailto:marv&#37;&#52;&#48;googlemail&#46;com">marv<span>&#64;</span>googlemail<span>&#46;</span>com</a>&gt;&#8217;,
+<a class="reference external" href="mailto:'the&#46;mice&#37;&#52;&#48;magrathea&#46;com">'the<span>&#46;</span>mice<span>&#64;</span>magrathea<span>&#46;</span>com</a>&#8216;</div></blockquote>
+<p>];</p>
+<p>// Used in a method call.
+goog.dom.createDom(goog.dom.TagName.DIV, {</p>
+<blockquote>
+<div>id: &#8216;foo&#8217;,
+className: &#8216;some-css-class&#8217;,
+style: &#8216;display:none&#8217;</div></blockquote>
+<p>}, &#8216;Hello, world!&#8217;);
+<a href="#id77"><span class="problematic" id="id78">``</span></a><a href="#id79"><span class="problematic" id="id80">`</span></a></p>
+<p>###### 函数参数</p>
+<p>尽量让函数参数在同一行上. 如果一行超过 80 字符, 每个参数独占一行, 并以4个空格缩进, 或者与括号对齐, 以提高可读性. 尽可能不要让每行超过80个字符. 比如下面这样:</p>
+<p><a href="#id81"><span class="problematic" id="id82">``</span></a><a href="#id83"><span class="problematic" id="id84">`</span></a>javascript
+// Four-space, wrap at 80.  Works with very long function names, survives
+// renaming without reindenting, low on space.
+goog.foo.bar.doThingThatIsVeryDifficultToExplain = function(</p>
+<blockquote>
+<div><blockquote>
+<div>veryDescriptiveArgumentNumberOne, veryDescriptiveArgumentTwo,
+tableModelEventHandlerProxy, artichokeDescriptorAdapterIterator) {</div></blockquote>
+<p>// ...</p>
+</div></blockquote>
+<p>};</p>
+<p>// Four-space, one argument per line.  Works with long function names,
+// survives renaming, and emphasizes each argument.
+goog.foo.bar.doThingThatIsVeryDifficultToExplain = function(</p>
+<blockquote>
+<div><blockquote>
+<div>veryDescriptiveArgumentNumberOne,
+veryDescriptiveArgumentTwo,
+tableModelEventHandlerProxy,
+artichokeDescriptorAdapterIterator) {</div></blockquote>
+<p>// ...</p>
+</div></blockquote>
+<p>};</p>
+<p>// Parenthesis-aligned indentation, wrap at 80.  Visually groups arguments,
+// low on space.
+function foo(veryDescriptiveArgumentNumberOne, veryDescriptiveArgumentTwo,</p>
+<blockquote>
+<div><blockquote>
+<div>tableModelEventHandlerProxy, artichokeDescriptorAdapterIterator) {</div></blockquote>
+<p>// ...</p>
+</div></blockquote>
+<p>}</p>
+<p>// Parenthesis-aligned, one argument per line.  Visually groups and
+// emphasizes each individual argument.
+function bar(veryDescriptiveArgumentNumberOne,</p>
+<blockquote>
+<div><blockquote>
+<div>veryDescriptiveArgumentTwo,
+tableModelEventHandlerProxy,
+artichokeDescriptorAdapterIterator) {</div></blockquote>
+<p>// ...</p>
+</div></blockquote>
+</div>
+<div class="section" id="id85">
+<h3>}<a class="headerlink" href="#id85" title="Permalink to this headline">¶</a></h3>
+<p>###### 传递匿名函数</p>
+<p>如果参数中有匿名函数, 函数体从调用该函数的左边开始缩进2个空格, 而不是从 function 这个关键字开始. 这让匿名函数更加易读 (不要增加很多没必要的缩进让函数体显示在屏幕的右侧).</p>
+<p><a href="#id86"><span class="problematic" id="id87">``</span></a><a href="#id88"><span class="problematic" id="id89">`</span></a>javascript
+var names = items.map(function(item) {</p>
+<blockquote>
+<div><blockquote>
+<div>return item.name;</div></blockquote>
+<p>});</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>prefix.something.reallyLongFunctionName(&#8216;whatever&#8217;, function(a1, a2) {</dt>
+<dd><dl class="first docutils">
+<dt>if (a1.equals(a2)) {</dt>
+<dd>someOtherLongFunctionName(a1);</dd>
+<dt>} else {</dt>
+<dd>andNowForSomethingCompletelyDifferent(a2.parrot);</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id90">
+<h3>});<a class="headerlink" href="#id90" title="Permalink to this headline">¶</a></h3>
+<p>###### 更多的缩进</p>
+<p>事实上, 除了 初始化数组和对象 , 和传递匿名函数外, 所有被拆开的多行文本要么选择与之前的表达式左对齐, 要么以4个(而不是2个)空格作为一缩进层次.</p>
+<p><a href="#id91"><span class="problematic" id="id92">``</span></a><a href="#id93"><span class="problematic" id="id94">`</span></a>javascript
+someWonderfulHtml = &#8216;&#8217; +</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>getEvenMoreHtml(someReallyInterestingValues, moreValues,</dt>
+<dd>evenMoreParams, &#8216;a duck&#8217;, true, 72,
+slightlyMoreMonkeys(0xfff)) +</dd>
+</dl>
+<p>&#8216;&#8217;;</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>thisIsAVeryLongVariableName =</dt>
+<dd>hereIsAnEvenLongerOtherFunctionNameThatWillNotFitOnPrevLine();</dd>
+<dt>thisIsAVeryLongVariableName = &#8216;expressionPartOne&#8217; + someMethodThatIsLong() +</dt>
+<dd>thisIsAnEvenLongerOtherFunctionNameThatCannotBeIndentedMore();</dd>
+<dt>someValue = this.foo(</dt>
+<dd>shortArg,
+&#8216;Some really long string arg - this is a pretty common case, actually.&#8217;,
+shorty2,
+this.bar());</dd>
+<dt>if (searchableCollection(allYourStuff).contains(theStuffYouWant) &amp;&amp;</dt>
+<dd><blockquote class="first">
+<div><dl class="docutils">
+<dt>!ambientNotification.isActive() &amp;&amp; (client.isAmbientSupported() ||</dt>
+<dd>client.alwaysTryAmbientAnyways()) {</dd>
+</dl>
+</div></blockquote>
+<p class="last">ambientNotification.activate();</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id95">
+<h3>}<a class="headerlink" href="#id95" title="Permalink to this headline">¶</a></h3>
+<p>###### 空行</p>
+<p>使用空行来划分一组逻辑上相关联的代码片段.</p>
+<p><a href="#id96"><span class="problematic" id="id97">``</span></a><a href="#id98"><span class="problematic" id="id99">`</span></a>javascript
+doSomethingTo(x);
+doSomethingElseTo(x);
+andThen(x);</p>
+<p>nowDoSomethingWith(y);</p>
+<p>andNowWith(z);
+<a href="#id100"><span class="problematic" id="id101">``</span></a><a href="#id102"><span class="problematic" id="id103">`</span></a></p>
+<p>###### 二元和三元操作符</p>
+<p>操作符始终跟随着前行, 这样就不用顾虑分号的隐式插入问题. 如果一行实在放不下, 还是按照上述的缩进风格来换行.</p>
+<p><a href="#id104"><span class="problematic" id="id105">``</span></a><a href="#id106"><span class="problematic" id="id107">`</span></a>javascript
+var x = a ? b : c;  // All on one line if it will fit.</p>
+<p>// Indentation +4 is OK.
+var y = a ?</p>
+<blockquote>
+<div>longButSimpleOperandB : longButSimpleOperandC;</div></blockquote>
+<p>// Indenting to the line position of the first operand is also OK.
+var z = a ?</p>
+<blockquote>
+<div>moreComplicatedB :
+moreComplicatedC;</div></blockquote>
+<p><a href="#id108"><span class="problematic" id="id109">``</span></a><a href="#id110"><span class="problematic" id="id111">`</span></a></p>
+<p>###### 括号</p>
+<p>只在需要的时候使用
+不要滥用括号, 只在必要的时候使用它.</p>
+<p>对于一元操作符(如delete, typeof 和 void ), 或是在某些关键词(如 return, throw, case, new )之后, 不要使用括号.</p>
+<p>###### 字符串</p>
+<p>使用 &#8216; 优于 &#8221;
+无论你选择单引号还是双引号都无所谓，在 JavaScript 中它们在解析上没有区别。而**绝对需要**强制的是一致性。 <strong>永远不要在同一个项目中混用两种引号，选择一种，并保持一致</strong>。</p>
+<p>单引号 (&#8216;) 优于双引号 (&#8221;). 当你创建一个包含 HTML 代码的字符串时就知道它的好处了.</p>
+<p><code class="docutils literal"><span class="pre">`javascript</span>
+<span class="pre">var</span> <span class="pre">msg</span> <span class="pre">=</span> <span class="pre">'This</span> <span class="pre">is</span> <span class="pre">some</span> <span class="pre">HTML';</span>
+<span class="pre">`</span></code></p>
+<p>###### 前置逗号（Comma First）</p>
+<p>请勿使用。所有使用这个文档作为基本风格指南的项目都不允许前置逗号的代码格式，除非明确指定或者作者要求。</p>
+<p>###### 注释</p>
+<blockquote>
+<div><ul class="simple">
+<li>单行注释放于代码上方为首选</li>
+<li>多行也可以</li>
+<li>行末注释应被避免!</li>
+<li>JSDoc 的方式也不错，但需要比较多的时间</li>
+</ul>
+</div></blockquote>
+<p>###### 使用 JSDoc</p>
+<p>我们使用 JSDoc 中的注释风格. 行内注释使用 // 变量 的形式. 另外, 我们也遵循 C++ 代码注释风格 . 这也就是说你需要:</p>
+<ul class="simple">
+<li>版权和著作权的信息,</li>
+<li>文件注释中应该写明该文件的基本信息(如, 这段代码的功能摘要, 如何使用, 与哪些东西相关), 来告诉那些不熟悉代码的读者.</li>
+<li>类, 函数, 变量和必要的注释,</li>
+<li>期望在哪些浏览器中执行,</li>
+<li>正确的大小写, 标点和拼写.</li>
+<li>为了避免出现句子片段, 请以合适的大/小写单词开头, 并以合适的标点符号结束这个句子.</li>
+</ul>
+<p>现在假设维护这段代码的是一位初学者. 这可能正好是这样的!</p>
+<p>目前很多编译器可从 JSDoc 中提取类型信息, 来对代码进行验证, 删除和压缩. 因此, 你很有必要去熟悉正确完整的 JSDoc .</p>
+<p>###### 顶层/文件注释</p>
+<p>顶层注释用于告诉不熟悉这段代码的读者这个文件中包含哪些东西. 应该提供文件的大体内容, 它的作者, 依赖关系和兼容性信息. 如下:</p>
+<p><a href="#id112"><span class="problematic" id="id113">``</span></a><a href="#id114"><span class="problematic" id="id115">`</span></a>javascript
+// Copyright 2009 Google Inc. All Rights Reserved.</p>
+<dl class="docutils">
+<dt>/**</dt>
+<dd><ul class="first simple">
+<li>&#64;fileoverview Description of file, its uses and information</li>
+<li>about its dependencies.</li>
+<li>&#64;author <a class="reference external" href="mailto:user&#37;&#52;&#48;google&#46;com">user<span>&#64;</span>google<span>&#46;</span>com</a> (Firstname Lastname)</li>
+</ul>
+<p class="last"><a href="#id116"><span class="problematic" id="id117">*</span></a>/</p>
+</dd>
+</dl>
+<p><a href="#id118"><span class="problematic" id="id119">``</span></a><a href="#id120"><span class="problematic" id="id121">`</span></a></p>
+<p>###### 类注释</p>
+<p>每个类的定义都要附带一份注释, 描述类的功能和用法. 也需要说明构造器参数. 如果该类继承自其它类, 应该使用 &#64;extends 标记. 如果该类是对接口的实现, 应该使用 &#64;implements 标记.</p>
+<p><a href="#id122"><span class="problematic" id="id123">``</span></a><a href="#id124"><span class="problematic" id="id125">`</span></a>javascript
+/**</p>
+<blockquote>
+<div><ul class="simple">
+<li>Class making something fun and easy.</li>
+<li>&#64;param {string} arg1 An argument that makes this more interesting.</li>
+<li>&#64;param {Array.&lt;number&gt;} arg2 List of numbers to be processed.</li>
+<li>&#64;constructor</li>
+<li>&#64;extends {goog.Disposable}</li>
+</ul>
+<p><a href="#id126"><span class="problematic" id="id127">*</span></a>/</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>project.MyClass = function(arg1, arg2) {</dt>
+<dd>// ...</dd>
+</dl>
+<p>};
+goog.inherits(project.MyClass, goog.Disposable);
+<a href="#id128"><span class="problematic" id="id129">``</span></a><a href="#id130"><span class="problematic" id="id131">`</span></a></p>
+<p>###### 方法与函数的注释</p>
+<p>提供参数的说明. 使用完整的句子, 并用第三人称来书写方法说明.</p>
+<p><a href="#id132"><span class="problematic" id="id133">``</span></a><a href="#id134"><span class="problematic" id="id135">`</span></a>javascript
+/**</p>
+<blockquote>
+<div><ul class="simple">
+<li>Converts text to some completely different text.</li>
+<li>&#64;param {string} arg1 An argument that makes this more interesting.</li>
+<li>&#64;return {string} Some return value.</li>
+</ul>
+<p><a href="#id136"><span class="problematic" id="id137">*</span></a>/</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>project.MyClass.prototype.someMethod = function(arg1) {</dt>
+<dd>// ...</dd>
+</dl>
+<p>};</p>
+<dl class="docutils">
+<dt>/**</dt>
+<dd><ul class="first simple">
+<li>Operates on an instance of MyClass and returns something.</li>
+<li>&#64;param {project.MyClass} obj Instance of MyClass which leads to a long</li>
+<li>comment that needs to be wrapped to two lines.</li>
+<li>&#64;return {boolean} Whether something occured.</li>
+</ul>
+<p class="last"><a href="#id138"><span class="problematic" id="id139">*</span></a>/</p>
+</dd>
+<dt>function PR_someMethod(obj) {</dt>
+<dd>// ...</dd>
+</dl>
+</div>
+<div class="section" id="id140">
+<h3>}<a class="headerlink" href="#id140" title="Permalink to this headline">¶</a></h3>
+<p>对于一些简单的, 不带参数的 getters, 说明可以忽略.</p>
+<p><a href="#id141"><span class="problematic" id="id142">``</span></a><a href="#id143"><span class="problematic" id="id144">`</span></a>javascript
+/**</p>
+<blockquote>
+<div><ul class="simple">
+<li>&#64;return {Element} The element for the component.</li>
+</ul>
+<p><a href="#id145"><span class="problematic" id="id146">*</span></a>/</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>goog.ui.Component.prototype.getElement = function() {</dt>
+<dd>return <a href="#id500"><span class="problematic" id="id501">this.element_</span></a>;</dd>
+</dl>
+</div>
+<div class="section" id="id147">
+<h3>};<a class="headerlink" href="#id147" title="Permalink to this headline">¶</a></h3>
+<p>###### 属性注释</p>
+<p>也需要对属性进行注释.</p>
+<p><a href="#id148"><span class="problematic" id="id149">``</span></a><a href="#id150"><span class="problematic" id="id151">`</span></a>javascript
+/**</p>
+<blockquote>
+<div><ul class="simple">
+<li>Maximum number of things per pane.</li>
+<li>&#64;type {number}</li>
+</ul>
+<p><a href="#id152"><span class="problematic" id="id153">*</span></a>/</p>
+</div></blockquote>
+<p>project.MyClass.prototype.someProperty = 4;
+<a href="#id154"><span class="problematic" id="id155">``</span></a><a href="#id156"><span class="problematic" id="id157">`</span></a></p>
+<p>###### JSDoc 缩进</p>
+<p>如果你在 &#64;param, &#64;return, &#64;supported, &#64;this 或 &#64;deprecated 中断行, 需要像在代码中一样, 使用4个空格作为一个缩进层次.</p>
+<p><a href="#id158"><span class="problematic" id="id159">``</span></a><a href="#id160"><span class="problematic" id="id161">`</span></a>javascript
+/**</p>
+<blockquote>
+<div><ul class="simple">
+<li>Illustrates line wrapping for long param/return descriptions.</li>
+<li>&#64;param {string} foo This is a param with a description too long to fit in</li>
+<li>one line.</li>
+<li>&#64;return {number} This returns something that has a description too long to</li>
+<li>fit in one line.</li>
+</ul>
+<p><a href="#id162"><span class="problematic" id="id163">*</span></a>/</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>project.MyClass.prototype.method = function(foo) {</dt>
+<dd>return 5;</dd>
+</dl>
+</div>
+<div class="section" id="id164">
+<h3>};<a class="headerlink" href="#id164" title="Permalink to this headline">¶</a></h3>
+<p>不要在 &#64;fileoverview 标记中进行缩进.</p>
+<p>虽然不建议, 但也可对说明文字进行适当的排版对齐. 不过, 这样带来一些负面影响, 就是当你每次修改变量名时, 都得重新排版说明文字以保持和变量名对齐.</p>
+<p><a href="#id165"><span class="problematic" id="id166">``</span></a><a href="#id167"><span class="problematic" id="id168">`</span></a>javascript
+/**</p>
+<blockquote>
+<div><ul class="simple">
+<li>This is NOT the preferred indentation method.</li>
+<li>&#64;param {string} foo This is a param with a description too long to fit in</li>
+<li>one line.</li>
+<li>&#64;return {number} This returns something that has a description too long to</li>
+<li>fit in one line.</li>
+</ul>
+<p><a href="#id169"><span class="problematic" id="id170">*</span></a>/</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>project.MyClass.prototype.method = function(foo) {</dt>
+<dd>return 5;</dd>
+</dl>
+</div>
+<div class="section" id="id171">
+<h3>};<a class="headerlink" href="#id171" title="Permalink to this headline">¶</a></h3>
+<p>###### 枚举</p>
+<p><a href="#id172"><span class="problematic" id="id173">``</span></a><a href="#id174"><span class="problematic" id="id175">`</span></a>javascript
+/**</p>
+<blockquote>
+<div><ul class="simple">
+<li>Enum for tri-state values.</li>
+<li>&#64;enum {number}</li>
+</ul>
+<p><a href="#id176"><span class="problematic" id="id177">*</span></a>/</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>project.TriState = {</dt>
+<dd>TRUE: 1,
+FALSE: -1,
+MAYBE: 0</dd>
+</dl>
+</div>
+<div class="section" id="id178">
+<h3>};<a class="headerlink" href="#id178" title="Permalink to this headline">¶</a></h3>
+<p>注意一下, 枚举也具有有效类型, 所以可以当成参数类型来用.</p>
+<p><a href="#id179"><span class="problematic" id="id180">``</span></a><a href="#id181"><span class="problematic" id="id182">`</span></a>javascript
+/**</p>
+<blockquote>
+<div><ul class="simple">
+<li>Sets project state.</li>
+<li>&#64;param {project.TriState} state New project state.</li>
+</ul>
+<p><a href="#id183"><span class="problematic" id="id184">*</span></a>/</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>project.setState = function(state) {</dt>
+<dd>// ...</dd>
+</dl>
+</div>
+<div class="section" id="id185">
+<h3>};<a class="headerlink" href="#id185" title="Permalink to this headline">¶</a></h3>
+<p>#### JavaScript 语言规范</p>
+<p>##### 变量</p>
+<p>声明变量必须加上 var 关键字.
+当你没有写 var, 变量就会暴露在全局上下文中, 这样很可能会和现有变量冲突. 另外, 如果没有加上, 很难明确该变量的作用域是什么, 变量也很可能像在局部作用域中, 很轻易地泄漏到 Document 或者 Window 中, 所以务必用 var 去声明变量.</p>
+<p><a href="#id186"><span class="problematic" id="id187">``</span></a><a href="#id188"><span class="problematic" id="id189">`</span></a>javascript</p>
+<blockquote>
+<div><p>// 变量
+var foo = &#8220;bar&#8221;,</p>
+<blockquote>
+<div>num = 1,
+undef;</div></blockquote>
+<p>// 字面量标识:
+var array = [],</p>
+<blockquote>
+<div>object = {};</div></blockquote>
+<p>// 在一个作用域（函数）内只使用一个 <cite>var</cite> 有助于提升可读性
+// 并且让你的声明列表变得有条不紊 (还帮你省了几次键盘敲击)</p>
+<p>// 不好
+var foo = &#8220;&#8221;;
+var bar = &#8220;&#8221;;
+var qux;</p>
+<p>// 好的做法
+var foo = &#8220;&#8221;,</p>
+<blockquote>
+<div>bar = &#8220;&#8221;,
+quux;</div></blockquote>
+<p>// 或者..
+var // 对这些变量的注释
+foo = &#8220;&#8221;,
+bar = &#8220;&#8221;,
+quux;</p>
+<p>// <cite>var</cite> 语句必须总是在各自作用域（函数）顶部
+// 同样适应于来自 ECMAScript 6 的常量</p>
+<p>// 不好
+function foo() {</p>
+<blockquote>
+<div><p>// 在变量前有语句</p>
+<dl class="docutils">
+<dt>var bar = &#8220;&#8221;,</dt>
+<dd>qux;</dd>
+</dl>
+</div></blockquote>
+<p>}</p>
+<p>// 好
+function foo() {</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>var bar = &#8220;&#8221;,</dt>
+<dd>qux;</dd>
+</dl>
+<p>// 所有语句都在变量之后</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p><a href="#id190"><span class="problematic" id="id191">``</span></a><a href="#id192"><span class="problematic" id="id193">`</span></a></p>
+<p>##### 常量</p>
+<p>常量的形式如: NAMES_LIKE_THIS, 即使用大写字符, 并用下划线分隔. 你也可用 &#64;const 标记来指明它是一个常量. 但请永远不要使用 const 关键词.</p>
+<p>Decision:
+对于基本类型的常量, 只需转换命名.</p>
+<p><a href="#id194"><span class="problematic" id="id195">``</span></a><a href="#id196"><span class="problematic" id="id197">`</span></a>javascript</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>/**</dt>
+<dd><ul class="first simple">
+<li>The number of seconds in a minute.</li>
+<li>&#64;type {number}</li>
+</ul>
+<p class="last"><a href="#id198"><span class="problematic" id="id199">*</span></a>/</p>
+</dd>
+</dl>
+<p>goog.example.SECONDS_IN_A_MINUTE = 60;</p>
+</div></blockquote>
+<p><a href="#id200"><span class="problematic" id="id201">``</span></a>`
+对于非基本类型, 使用 &#64;const 标记.</p>
+<blockquote>
+<div><p><a href="#id202"><span class="problematic" id="id203">``</span></a><a href="#id204"><span class="problematic" id="id205">`</span></a>javascript</p>
+<dl class="docutils">
+<dt>/**</dt>
+<dd><ul class="first simple">
+<li>The number of seconds in each of the given units.</li>
+<li>&#64;type {Object.&lt;number&gt;}</li>
+<li>&#64;const</li>
+</ul>
+<p class="last"><a href="#id206"><span class="problematic" id="id207">*</span></a>/</p>
+</dd>
+<dt>goog.example.SECONDS_TABLE = {</dt>
+<dd>minute: 60,
+hour: 60 * 60,
+day: 60 * 60 * 24</dd>
+</dl>
+<p>}</p>
+<p><a href="#id208"><span class="problematic" id="id209">``</span></a><a href="#id210"><span class="problematic" id="id211">`</span></a></p>
+</div></blockquote>
+<p>这标记告诉编译器它是常量.</p>
+<p>至于关键词 const, 因为 IE 不能识别, 所以不要使用.</p>
+<p>##### 分号</p>
+<p>总是使用分号.</p>
+<p>如果仅依靠语句间的隐式分隔, 有时会很麻烦. 你自己更能清楚哪里是语句的起止. 而且有些情况下, 漏掉分号会很危险，可能会导致代码合并错误等，又比如:</p>
+<blockquote>
+<div><p><a href="#id212"><span class="problematic" id="id213">``</span></a><a href="#id214"><span class="problematic" id="id215">`</span></a>javascript</p>
+<blockquote>
+<div><p>// 1.
+MyClass.prototype.myMethod = function() {</p>
+<blockquote>
+<div>return 42;</div></blockquote>
+<p>}  // No semicolon here.</p>
+<dl class="docutils">
+<dt>(function() {</dt>
+<dd>// Some initialization code wrapped in a function to create a scope for locals.</dd>
+</dl>
+<p>})();</p>
+<p>var THINGS_TO_EAT = [apples, oysters, sprayOnCheese]  // No semicolon here.</p>
+<p>// 2. conditional execution a la bash
+-1 == resultOfOperation() || die();</p>
+</div></blockquote>
+<p><a href="#id216"><span class="problematic" id="id217">``</span></a><a href="#id218"><span class="problematic" id="id219">`</span></a></p>
+</div></blockquote>
+<p>这段代码会发生些什么诡异事呢?</p>
+<p>1. 报 JavaScript 错误 - 例子1上的语句会解释成, 一个函数带一匿名函数作为参数而被调用, 返回42后, 又一次被&#8221;调用&#8221;, 这就导致了错误.
+1. 当 resultOfOperation() 返回非 NaN 时, 就会调用die, 其结果也会赋给 THINGS_TO_EAT.
+为什么?</p>
+<p>JavaScript 的语句以分号作为结束符, 除非可以非常准确推断某结束位置才会省略分号. 上面的例子产出错误, 均是在语句中声明了函数/对象/数组直接量, 但 闭括号(&#8216;}&#8217;或&#8217;]&#8217;)并不足以表示该语句的结束. 在 JavaScript 中, 只有当语句后的下一个符号是后缀或括号运算符时, 才会认为该语句的结束. 参考：[JS分号自动插入机制](<a class="reference external" href="http://justjavac.iteye.com/blog/1852405">http://justjavac.iteye.com/blog/1852405</a>)</p>
+<p>遗漏分号有时会出现很奇怪的结果, 所以确保语句以分号结束.</p>
+<p>##### 块内函数声明</p>
+<p>不要在块内声明一个函数，不要写成:</p>
+<dl class="docutils">
+<dt><a href="#id220"><span class="problematic" id="id221">``</span></a><a href="#id222"><span class="problematic" id="id223">`</span></a>javascript</dt>
+<dd><dl class="first docutils">
+<dt>if (x) {</dt>
+<dd>function foo() {}</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+</dl>
+<p><a href="#id224"><span class="problematic" id="id225">``</span></a>`
+虽然很多 JS 引擎都支持块内声明函数, 但它不属于 ECMAScript 规范 (见 [ECMA-262](<a class="reference external" href="http://www.ecma-international.org/publications/standards/Ecma-262.htm">http://www.ecma-international.org/publications/standards/Ecma-262.htm</a>), 第13和14条). 各个浏览器糟糕的实现相互不兼容, 有些也与未来 ECMAScript 草案相违背. ECMAScript 只允许在脚本的根语句或函数中声明函数. 如果确实需要在块中定义函数, 建议使用函数表达式来初始化变量:</p>
+<dl class="docutils">
+<dt><a href="#id226"><span class="problematic" id="id227">``</span></a><a href="#id228"><span class="problematic" id="id229">`</span></a>javascript</dt>
+<dd><dl class="first docutils">
+<dt>if (x) {</dt>
+<dd>var foo = function() {}</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+</dl>
+<p><a href="#id230"><span class="problematic" id="id231">``</span></a>`
+##### 标准特性</p>
+<p>标准特性总是优于非标准特性.
+最大化可移植性和兼容性, 尽量使用标准方法而不是用非标准方法, (比如, 优先用string.charAt(3) 而不用 string[3] , 通过 DOM 原生函数访问元素, 而不是使用应用封装好的快速接口.</p>
+<p>##### 不要封装基本类型</p>
+<p>没有任何理由去封装基本类型, 另外还存在一些风险:</p>
+<dl class="docutils">
+<dt><a href="#id232"><span class="problematic" id="id233">``</span></a><a href="#id234"><span class="problematic" id="id235">`</span></a>javascript</dt>
+<dd><p class="first">var x = new Boolean(false);
+if (x) {</p>
+<blockquote>
+<div>alert(&#8216;hi&#8217;);  // Shows &#8216;hi&#8217;.</div></blockquote>
+<p class="last">}</p>
+</dd>
+</dl>
+<p><a href="#id236"><span class="problematic" id="id237">``</span></a>`
+除非明确用于类型转换, 其他情况请千万不要这样做！</p>
+<dl class="docutils">
+<dt><a href="#id238"><span class="problematic" id="id239">``</span></a><a href="#id240"><span class="problematic" id="id241">`</span></a>javascript</dt>
+<dd><p class="first">var x = Boolean(0);
+if (x) {</p>
+<blockquote>
+<div>alert(&#8216;hi&#8217;);  // This will never be alerted.</div></blockquote>
+<p class="last">}
+typeof Boolean(0) == &#8216;boolean&#8217;;
+typeof new Boolean(0) == &#8216;object&#8217;;</p>
+</dd>
+</dl>
+<p><a href="#id242"><span class="problematic" id="id243">``</span></a>`
+有时用作 number, string 或 boolean时, 类型的转换会非常实用.</p>
+<p>##### 闭包</p>
+<p>可以, 但小心使用.
+闭包也许是 JS 中最有用的特性了. 有一份比较好的介绍闭包原理的[文档](<a class="reference external" href="http://jibbering.com/faq/notes/closures/">http://jibbering.com/faq/notes/closures/</a>).</p>
+<p>有一点需要牢记, 闭包保留了一个指向它封闭作用域的指针, 所以, 在给 DOM 元素附加闭包时, 很可能会产生循环引用, 进一步导致内存泄漏. 比如下面的代码:</p>
+<dl class="docutils">
+<dt><a href="#id244"><span class="problematic" id="id245">``</span></a><a href="#id246"><span class="problematic" id="id247">`</span></a>javascript</dt>
+<dd><dl class="first docutils">
+<dt>function foo(element, a, b) {</dt>
+<dd>element.onclick = function() { /* uses a and b <a href="#id248"><span class="problematic" id="id249">*</span></a>/ };</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+</dl>
+<p><a href="#id250"><span class="problematic" id="id251">``</span></a>`
+这里, 即使没有使用 element, 闭包也保留了 element, a 和 b 的引用, 由于 element 也保留了对闭包的引用, 这就产生了循环引用, 这就不能被 GC 回收. 这种情况下, 可将代码重构为:</p>
+<dl class="docutils">
+<dt><a href="#id252"><span class="problematic" id="id253">``</span></a><a href="#id254"><span class="problematic" id="id255">`</span></a>javascript</dt>
+<dd><dl class="first docutils">
+<dt>function foo(element, a, b) {</dt>
+<dd>element.onclick = bar(a, b);</dd>
+</dl>
+<p>}</p>
+<dl class="docutils">
+<dt>function bar(a, b) {</dt>
+<dd>return function() { /* uses a and b <a href="#id256"><span class="problematic" id="id257">*</span></a>/ }</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+</dl>
+<p><a href="#id258"><span class="problematic" id="id259">``</span></a><a href="#id260"><span class="problematic" id="id261">`</span></a></p>
+<p>##### eval()</p>
+<p>只用于解析序列化串 (如: 解析 RPC 响应), 而且解析序列号字符串用JSON.parse()会更好，所以最好放弃使用 eval().
+eval() 会让程序执行的比较混乱, 当 eval() 里面包含用户输入的话就更加危险. 可以用其他更佳的, 更清晰, 更安全的方式写你的代码, 所以一般情况下请不要使用 eval(). 当碰到一些需要解析序列化串的情况下(如, 计算 RPC 响应), 使用 eval 很容易实现.</p>
+<p>解析序列化串是指将字节流转换成内存中的数据结构. 比如, 你可能会将一个对象输出成文件形式:</p>
+<dl class="docutils">
+<dt><a href="#id262"><span class="problematic" id="id263">``</span></a><a href="#id264"><span class="problematic" id="id265">`</span></a>javascript</dt>
+<dd><dl class="first docutils">
+<dt>users = [</dt>
+<dd><dl class="first docutils">
+<dt>{</dt>
+<dd>name: &#8216;Eric&#8217;,
+id: 37824,
+email: <a class="reference external" href="mailto:'jellyvore&#37;&#52;&#48;myway&#46;com">'jellyvore<span>&#64;</span>myway<span>&#46;</span>com</a>&#8216;</dd>
+</dl>
+<p>},
+{</p>
+<blockquote class="last">
+<div>name: &#8216;xtof&#8217;,
+id: 31337,
+email: <a class="reference external" href="mailto:'b4d455h4x0r&#37;&#52;&#48;google&#46;com">'b4d455h4x0r<span>&#64;</span>google<span>&#46;</span>com</a>&#8216;</div></blockquote>
+</dd>
+</dl>
+<p class="last">];</p>
+</dd>
+</dl>
+<p><a href="#id266"><span class="problematic" id="id267">``</span></a><a href="#id268"><span class="problematic" id="id269">`</span></a></p>
+<p>很简单地调用 eval 后, 把表示成文件的数据读取回内存中.</p>
+<p>类似的, eval() 对 RPC 响应值进行解码. 例如, 你在使用 XMLHttpRequest 发出一个 RPC 请求后, 通过 eval () 将服务端的响应文本转成 JavaScript 对象:</p>
+<dl class="docutils">
+<dt><a href="#id270"><span class="problematic" id="id271">``</span></a><a href="#id272"><span class="problematic" id="id273">`</span></a>javascript</dt>
+<dd><p class="first">var userOnline = false;
+var user = &#8216;nusrat&#8217;;
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.open(&#8216;GET&#8217;, &#8216;<a class="reference external" href="http://chat.google.com/isUserOnline?user=">http://chat.google.com/isUserOnline?user=</a>&#8216; + user, false);
+xmlhttp.send(&#8216;&#8217;);
+// Server returns:
+// userOnline = true;
+if (xmlhttp.status == 200) {</p>
+<blockquote>
+<div>eval(xmlhttp.responseText);</div></blockquote>
+<p class="last">}
+// userOnline is now true.</p>
+</dd>
+</dl>
+<p><a href="#id274"><span class="problematic" id="id275">``</span></a><a href="#id276"><span class="problematic" id="id277">`</span></a></p>
+<p>##### with() {}</p>
+<p>不要使用
+使用 with 让你的代码在语义上变得不清晰. 因为 with 的对象, 可能会与局部变量产生冲突, 从而改变你程序原本的用义. 下面的代码是干嘛的?</p>
+<dl class="docutils">
+<dt><a href="#id278"><span class="problematic" id="id279">``</span></a><a href="#id280"><span class="problematic" id="id281">`</span></a>javascript</dt>
+<dd><dl class="first docutils">
+<dt>with (foo) {</dt>
+<dd>var x = 3;
+return x;</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+</dl>
+<p><a href="#id282"><span class="problematic" id="id283">``</span></a><a href="#id284"><span class="problematic" id="id285">`</span></a></p>
+<p>答案: 任何事. 局部变量 x 可能被 foo 的属性覆盖, 当它定义一个 setter 时, 在赋值 3 后会执行很多其他代码. 所以不要使用 with 语句.</p>
+<p>##### this</p>
+<p>仅在对象构造器, 方法, 闭包中使用.
+this 的语义很特别. 有时它引用一个全局对象(大多数情况下), 调用者的作用域(使用 eval时), DOM 树中的节点(添加事件处理函数时), 新创建的对象(使用一个构造器), 或者其他对象(如果函数被 call() 或 apply()).</p>
+<p>使用时很容易出错, 所以只有在下面两个情况时才能使用:</p>
+<ul class="simple">
+<li>在构造器中</li>
+<li>对象的方法(包括创建的闭包)中</li>
+</ul>
+<p>##### for-in 循环</p>
+<p>只用于 object/map/hash 的遍历
+对 Array 用 for-in 循环有时会出错. 因为它并不是从 0 到 length - 1 进行遍历, 而是所有出现在对象及其原型链的键值. 下面就是一些失败的使用案例:</p>
+<dl class="docutils">
+<dt><a href="#id286"><span class="problematic" id="id287">``</span></a><a href="#id288"><span class="problematic" id="id289">`</span></a>javascript</dt>
+<dd><dl class="first docutils">
+<dt>function printArray(arr) {</dt>
+<dd><dl class="first docutils">
+<dt>for (var key in arr) {</dt>
+<dd>print(arr[key]);</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+</dl>
+<p>}</p>
+<p>printArray([0,1,2,3]);  // This works.</p>
+<p>var a = new Array(10);
+printArray(a);  // This is wrong.</p>
+<p>a = document.getElementsByTagName(&#8216;*&#8217;);
+printArray(a);  // This is wrong.</p>
+<p>a = [0,1,2,3];
+a.buhu = &#8216;wine&#8217;;
+printArray(a);  // This is wrong again.</p>
+<p>a = new Array;
+a[3] = 3;
+printArray(a);  // This is wrong again.</p>
+<p>// 而遍历数组通常用最普通的 for 循环.
+function printArray(arr) {</p>
+<blockquote>
+<div><p>var l = arr.length;
+for (var i = 0; i &lt; l; i++) {</p>
+<blockquote>
+<div>print(arr[i]);</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p class="last">}</p>
+</dd>
+</dl>
+<p><a href="#id290"><span class="problematic" id="id291">``</span></a><a href="#id292"><span class="problematic" id="id293">`</span></a></p>
+<p>##### 多行字符串</p>
+<p>不要使用. 不要这样写长字符串:</p>
+<p><a href="#id294"><span class="problematic" id="id295">``</span></a><a href="#id296"><span class="problematic" id="id297">`</span></a>javascript
+var myString = &#8216;A rather long string of English text, an error message </p>
+<blockquote>
+<div>actually that just keeps going and going &#8211; an error message to make the Energizer bunny blush (right through those Schwarzenegger shades)! Where was I? Oh yes, you&#8217;ve got an error and all the extraneous whitespace is just gravy.  Have a nice day.&#8217;;</div></blockquote>
+<p><a href="#id298"><span class="problematic" id="id299">``</span></a><a href="#id300"><span class="problematic" id="id301">`</span></a></p>
+<p>在编译时, 不能忽略行起始位置的空白字符; &#8220;&#8221; 后的空白字符会产生奇怪的错误; 虽然大多数脚本引擎支持这种写法, 但它不是 ECMAScript 的标准规范.</p>
+<p>##### Array 和 Object 直接量</p>
+<p>使用 Array 和 Object 语法, 而不使用 Array 和 Object 构造器.</p>
+<p>使用 Array 构造器很容易因为传参不恰当导致错误.</p>
+<dl class="docutils">
+<dt><a href="#id302"><span class="problematic" id="id303">``</span></a><a href="#id304"><span class="problematic" id="id305">`</span></a>javascript</dt>
+<dd><p class="first">// Length is 3.
+var a1 = new Array(x1, x2, x3);</p>
+<p>// Length is 2.
+var a2 = new Array(x1, x2);</p>
+<p>// If x1 is a number and it is a natural number the length will be x1.
+// If x1 is a number but not a natural number this will throw an exception.
+// Otherwise the array will have one element with x1 as its value.
+var a3 = new Array(x1);</p>
+<p class="last">// Length is 0.
+var a4 = new Array();</p>
+</dd>
+</dl>
+<p><a href="#id306"><span class="problematic" id="id307">``</span></a>`
+如果传入一个参数而不是2个参数, 数组的长度很有可能就不是你期望的数值了.</p>
+<p>为了避免这些歧义, 我们应该使用更易读的直接量来声明.</p>
+<dl class="docutils">
+<dt><a href="#id308"><span class="problematic" id="id309">``</span></a><a href="#id310"><span class="problematic" id="id311">`</span></a>javascript</dt>
+<dd>var a = [x1, x2, x3];
+var a2 = [x1, x2];
+var a3 = [x1];
+var a4 = [];</dd>
+</dl>
+<p><a href="#id312"><span class="problematic" id="id313">``</span></a>`
+虽然 Object 构造器没有上述类似的问题, 但鉴于可读性和一致性考虑, 最好还是在字面上更清晰地指明. 例如：</p>
+<dl class="docutils">
+<dt><a href="#id314"><span class="problematic" id="id315">``</span></a><a href="#id316"><span class="problematic" id="id317">`</span></a>javascript</dt>
+<dd><p class="first">var o = new Object();</p>
+<p class="last">var o2 = new Object();
+o2.a = 0;
+o2.b = 1;
+o2.c = 2;
+o2[&#8216;strange key&#8217;] = 3;</p>
+</dd>
+</dl>
+<p><a href="#id318"><span class="problematic" id="id319">``</span></a>`
+应该写成:</p>
+<dl class="docutils">
+<dt><a href="#id320"><span class="problematic" id="id321">``</span></a><a href="#id322"><span class="problematic" id="id323">`</span></a>javascript</dt>
+<dd><p class="first">var o = {};</p>
+<dl class="docutils">
+<dt>var o2 = {</dt>
+<dd>a: 0,
+b: 1,
+c: 2,
+&#8216;strange key&#8217;: 3</dd>
+</dl>
+<p class="last">};</p>
+</dd>
+</dl>
+<p><a href="#id324"><span class="problematic" id="id325">``</span></a><a href="#id326"><span class="problematic" id="id327">`</span></a></p>
+<p>##### 不要修改内置对象的原型</p>
+<p>千万不要修改内置对象, 如 Object.prototype 和 Array.prototype 的原型. 而修改内置对象, 如 Function.prototype 的原型, 虽然少危险些, 但仍会导致调试时的诡异现象. 所以也要避免修改其原型.</p>
+<p>#### JavaScript 小技巧(Tips and Tricks)</p>
+<p>##### True 和 False 布尔表达式</p>
+<p>下面的布尔表达式都返回 false:</p>
+<p><code class="docutils literal"><span class="pre">`javascript</span>
+<span class="pre">null</span>
+<span class="pre">undefined</span>
+<span class="pre">''</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="pre">//</span> <span class="pre">空字符串</span>
+<span class="pre">0</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="pre">//数字0</span>
+<span class="pre">`</span></code></p>
+<p>但小心下面的, 可都返回 true:</p>
+<p><code class="docutils literal"><span class="pre">`javascript</span>
+<span class="pre">'0'</span>&nbsp;&nbsp; <span class="pre">//</span> <span class="pre">字符串0</span>
+<span class="pre">[]</span>&nbsp;&nbsp;&nbsp; <span class="pre">//</span> <span class="pre">空数组</span>
+<span class="pre">{}</span>&nbsp;&nbsp;&nbsp; <span class="pre">//</span> <span class="pre">空对象</span>
+<span class="pre">`</span></code>
+下面段比较糟糕的代码:</p>
+<p><code class="docutils literal"><span class="pre">`javascript</span>
+<span class="pre">while</span> <span class="pre">(x</span> <span class="pre">!=</span> <span class="pre">null)</span> <span class="pre">{</span>
+<span class="pre">`</span></code>
+你可以直接写成下面的形式(只要你希望 x 不是 0 和空字符串, 和 false):</p>
+<p><code class="docutils literal"><span class="pre">`javascript</span>
+<span class="pre">while</span> <span class="pre">(x)</span> <span class="pre">{</span>
+<span class="pre">`</span></code>
+如果你想检查字符串是否为 null 或空:</p>
+<p><code class="docutils literal"><span class="pre">`javascript</span>
+<span class="pre">if</span> <span class="pre">(y</span> <span class="pre">!=</span> <span class="pre">null</span> <span class="pre">&amp;&amp;</span> <span class="pre">y</span> <span class="pre">!=</span> <span class="pre">'')</span> <span class="pre">{</span>
+<span class="pre">`</span></code></p>
+<p>但这样会更好:</p>
+<p><code class="docutils literal"><span class="pre">`javascript</span>
+<span class="pre">if</span> <span class="pre">(y)</span> <span class="pre">{</span>
+<span class="pre">`</span></code>
+注意: 还有很多需要注意的地方, 如:</p>
+<dl class="docutils">
+<dt><a href="#id328"><span class="problematic" id="id329">``</span></a><a href="#id330"><span class="problematic" id="id331">`</span></a>javascript</dt>
+<dd>Boolean(&#8216;0&#8217;) == true
+&#8216;0&#8217; != true
+0 != null
+0 == []
+0 == false
+Boolean(null) == false
+null != true
+null != false
+Boolean(undefined) == false
+undefined != true
+undefined != false
+Boolean([]) == true
+[] != true
+[] == false
+Boolean({}) == true
+{} != true
+{} != false</dd>
+</dl>
+<p><a href="#id332"><span class="problematic" id="id333">``</span></a><a href="#id334"><span class="problematic" id="id335">`</span></a></p>
+<p>##### 条件(三元)操作符 (?:)</p>
+<p>三元操作符用于替代下面的代码:</p>
+<dl class="docutils">
+<dt><a href="#id336"><span class="problematic" id="id337">``</span></a><a href="#id338"><span class="problematic" id="id339">`</span></a>javascript</dt>
+<dd><dl class="first docutils">
+<dt>if (val != 0) {</dt>
+<dd>return foo();</dd>
+<dt>} else {</dt>
+<dd>return bar();</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+</dl>
+<p><a href="#id340"><span class="problematic" id="id341">``</span></a><a href="#id342"><span class="problematic" id="id343">`</span></a></p>
+<p>你可以写成:
+<a href="#id344"><span class="problematic" id="id345">``</span></a><a href="#id346"><span class="problematic" id="id347">`</span></a>javascript</p>
+<blockquote>
+<div>return val ? foo() : bar();</div></blockquote>
+<p><a href="#id348"><span class="problematic" id="id349">``</span></a>`
+在生成 HTML 代码时也是很有用的:</p>
+<dl class="docutils">
+<dt><a href="#id350"><span class="problematic" id="id351">``</span></a><a href="#id352"><span class="problematic" id="id353">`</span></a>javascript</dt>
+<dd><dl class="first last docutils">
+<dt>var html = &#8216;&lt;input type=&#8221;checkbox&#8221;&#8217; +</dt>
+<dd>(isChecked ? &#8216; checked&#8217; : &#8216;&#8217;) +
+(isEnabled ? &#8216;&#8217; : &#8216; disabled&#8217;) +
+&#8216; name=&#8221;foo&#8221;&gt;&#8217;;</dd>
+</dl>
+</dd>
+</dl>
+<p><a href="#id354"><span class="problematic" id="id355">``</span></a><a href="#id356"><span class="problematic" id="id357">`</span></a></p>
+<p>##### &amp;&amp; 和 ||</p>
+<p>二元布尔操作符是可短路的, 只有在必要时才会计算到最后一项.</p>
+<p>&#8220;||&#8221; 被称作为 &#8216;default&#8217; 操作符, 因为可以这样:</p>
+<dl class="docutils">
+<dt><a href="#id358"><span class="problematic" id="id359">``</span></a><a href="#id360"><span class="problematic" id="id361">`</span></a>javascript</dt>
+<dd><p class="first">/** &#64;param {<a href="#id362"><span class="problematic" id="id363">*</span></a>=} opt_win <a href="#id364"><span class="problematic" id="id365">*</span></a>/
+function foo(opt_win) {</p>
+<blockquote>
+<div><p>var win;
+if (opt_win) {</p>
+<blockquote>
+<div>win = opt_win;</div></blockquote>
+<dl class="docutils">
+<dt>} else {</dt>
+<dd>win = window;</dd>
+</dl>
+<p>}
+// ...</p>
+</div></blockquote>
+<p class="last">}</p>
+</dd>
+</dl>
+<p><a href="#id366"><span class="problematic" id="id367">``</span></a><a href="#id368"><span class="problematic" id="id369">`</span></a></p>
+<p>你可以使用它来简化上面的代码:</p>
+<dl class="docutils">
+<dt><a href="#id370"><span class="problematic" id="id371">``</span></a><a href="#id372"><span class="problematic" id="id373">`</span></a>javascript</dt>
+<dd><p class="first">/** &#64;param {<a href="#id374"><span class="problematic" id="id375">*</span></a>=} opt_win <a href="#id376"><span class="problematic" id="id377">*</span></a>/
+function foo(opt_win) {</p>
+<blockquote>
+<div>var win = opt_win || window;
+// ...</div></blockquote>
+<p class="last">}</p>
+</dd>
+</dl>
+<p><a href="#id378"><span class="problematic" id="id379">``</span></a><a href="#id380"><span class="problematic" id="id381">`</span></a></p>
+<p>&#8220;&amp;&amp;&#8221; 也可简短代码.比如:</p>
+<dl class="docutils">
+<dt><a href="#id382"><span class="problematic" id="id383">``</span></a><a href="#id384"><span class="problematic" id="id385">`</span></a>javascript</dt>
+<dd><dl class="first docutils">
+<dt>if (node) {</dt>
+<dd><dl class="first docutils">
+<dt>if (node.kids) {</dt>
+<dd><dl class="first docutils">
+<dt>if (node.kids[index]) {</dt>
+<dd>foo(node.kids[index]);</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+</dl>
+<p><a href="#id386"><span class="problematic" id="id387">``</span></a>`
+你可以像这样来使用:</p>
+<dl class="docutils">
+<dt><a href="#id388"><span class="problematic" id="id389">``</span></a><a href="#id390"><span class="problematic" id="id391">`</span></a>javascript</dt>
+<dd><dl class="first docutils">
+<dt>if (node &amp;&amp; node.kids &amp;&amp; node.kids[index]) {</dt>
+<dd>foo(node.kids[index]);</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+</dl>
+<p><a href="#id392"><span class="problematic" id="id393">``</span></a>`
+或者:</p>
+<dl class="docutils">
+<dt><a href="#id394"><span class="problematic" id="id395">``</span></a><a href="#id396"><span class="problematic" id="id397">`</span></a>javascript</dt>
+<dd><p class="first">var kid = node &amp;&amp; node.kids &amp;&amp; node.kids[index];
+if (kid) {</p>
+<blockquote>
+<div>foo(kid);</div></blockquote>
+<p class="last">}</p>
+</dd>
+</dl>
+<p><a href="#id398"><span class="problematic" id="id399">``</span></a><a href="#id400"><span class="problematic" id="id401">`</span></a></p>
+<p>不过这样就有点儿过头了:
+<a href="#id402"><span class="problematic" id="id403">``</span></a><a href="#id404"><span class="problematic" id="id405">`</span></a>javascript</p>
+<blockquote>
+<div>node &amp;&amp; node.kids &amp;&amp; node.kids[index] &amp;&amp; foo(node.kids[index]);</div></blockquote>
+<p><a href="#id406"><span class="problematic" id="id407">``</span></a><a href="#id408"><span class="problematic" id="id409">`</span></a></p>
+<p>##### 使用 join() 来创建字符串</p>
+<p>通常是这样使用的:</p>
+<dl class="docutils">
+<dt><a href="#id410"><span class="problematic" id="id411">``</span></a><a href="#id412"><span class="problematic" id="id413">`</span></a>javascript</dt>
+<dd><dl class="first docutils">
+<dt>function listHtml(items) {</dt>
+<dd><p class="first">var html = &#8216;&lt;div class=&#8221;foo&#8221;&gt;&#8217;;
+for (var i = 0; i &lt; items.length; ++i) {</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>if (i &gt; 0) {</dt>
+<dd>html += &#8216;, &#8216;;</dd>
+</dl>
+<p>}
+html += itemHtml(items[i]);</p>
+</div></blockquote>
+<p class="last">}
+html += &#8216;&lt;/div&gt;&#8217;;
+return html;</p>
+</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+</dl>
+<p><a href="#id414"><span class="problematic" id="id415">``</span></a>`
+但这样在 IE 下非常慢, 可以用下面的方式:</p>
+<dl class="docutils">
+<dt><a href="#id416"><span class="problematic" id="id417">``</span></a><a href="#id418"><span class="problematic" id="id419">`</span></a>javascript</dt>
+<dd><dl class="first docutils">
+<dt>function listHtml(items) {</dt>
+<dd><p class="first">var html = [];
+for (var i = 0; i &lt; items.length; ++i) {</p>
+<blockquote>
+<div>html[i] = itemHtml(items[i]);</div></blockquote>
+<p class="last">}
+return &#8216;&lt;div class=&#8221;foo&#8221;&gt;&#8217; + html.join(&#8216;, &#8216;) + &#8216;&lt;/div&gt;&#8217;;</p>
+</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+</dl>
+<p><a href="#id420"><span class="problematic" id="id421">``</span></a>`
+你也可以是用数组作为字符串构造器, 然后通过 myArray.join(&#8216;&#8217;) 转换成字符串. 不过由于赋值操作快于数组的 push(), 所以尽量使用赋值操作.</p>
+<p>##### 类型检测 (来源于 jQuery Core Style Guidelines)</p>
+<ul>
+<li><p class="first">直接类型（实际类型，Actual Types）</p>
+<blockquote>
+<div><p>String:</p>
+<blockquote>
+<div><p>typeof variable === &#8220;string&#8221;</p>
+</div></blockquote>
+<p>Number:</p>
+<blockquote>
+<div><p>typeof variable === &#8220;number&#8221;</p>
+</div></blockquote>
+<p>Boolean:</p>
+<blockquote>
+<div><p>typeof variable === &#8220;boolean&#8221;</p>
+</div></blockquote>
+<p>Object:</p>
+<blockquote>
+<div><p>typeof variable === &#8220;object&#8221;</p>
+</div></blockquote>
+<p>Array:</p>
+<blockquote>
+<div><p>Array.isArray(arrayLikeObject)
+(如果可能的话)</p>
+</div></blockquote>
+<p>Node:</p>
+<blockquote>
+<div><p>elem.nodeType === 1</p>
+</div></blockquote>
+<p>null:</p>
+<blockquote>
+<div><p>variable === null</p>
+</div></blockquote>
+<p>null or undefined:</p>
+<blockquote>
+<div><p>variable == null</p>
+</div></blockquote>
+<p>undefined:</p>
+<blockquote>
+<div><p>全局变量:</p>
+<blockquote>
+<div><p>typeof variable === &#8220;undefined&#8221;</p>
+</div></blockquote>
+<p>局部变量:</p>
+<blockquote>
+<div><p>variable === undefined</p>
+</div></blockquote>
+<p>属性:</p>
+<blockquote>
+<div><p>object.prop === undefined
+object.hasOwnProperty(prop)
+&#8220;prop&#8221; in object</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p class="first">转换类型（强制类型，Coerced Types）</p>
+<blockquote>
+<div><p>考虑下面这个的含义...</p>
+<p>给定的 HTML:</p>
+<p><a href="#id422"><span class="problematic" id="id423">``</span></a><a href="#id424"><span class="problematic" id="id425">`</span></a>html</p>
+<p>&lt;input type=&#8221;text&#8221; id=&#8221;foo-input&#8221; value=&#8221;1&#8221;&gt;</p>
+<p><a href="#id426"><span class="problematic" id="id427">``</span></a><a href="#id428"><span class="problematic" id="id429">`</span></a></p>
+<p><a href="#id430"><span class="problematic" id="id431">``</span></a><a href="#id432"><span class="problematic" id="id433">`</span></a>javascript</p>
+<p>// <cite>foo</cite> 已经被赋予值 <cite>0</cite>，类型为 <cite>number</cite>
+var foo = 0;</p>
+<p>// typeof foo;
+// &#8220;number&#8221;
+...</p>
+<p>// 在后续的代码中，你需要更新 <cite>foo</cite>，赋予在 input 元素中得到的新值</p>
+<p>foo = document.getElementById(&#8220;foo-input&#8221;).value;</p>
+<p>// 如果你现在测试 <cite>typeof foo</cite>, 结果将是 <cite>string</cite>
+// 这意味着你在 if 语句检测 <cite>foo</cite> 有类似于此的逻辑:</p>
+<dl class="docutils">
+<dt>if (foo === 1) {</dt>
+<dd><p class="first last">importantTask();</p>
+</dd>
+</dl>
+<p>}</p>
+<p>// <cite>importantTask()</cite> 将永远不会被执行，即使 <cite>foo</cite> 有一个值 &#8220;1&#8221;</p>
+<p>// 你可以巧妙地使用 + / - 一元运算符强制转换类型以解决问题:</p>
+<p>foo = +document.getElementById(&#8220;foo-input&#8221;).value;
+//    ^ + 一元运算符将它右边的运算对象转换为 <cite>number</cite></p>
+<p>// typeof foo;
+// &#8220;number&#8221;</p>
+<dl class="docutils">
+<dt>if (foo === 1) {</dt>
+<dd><p class="first last">importantTask();</p>
+</dd>
+</dl>
+<p>}</p>
+<p>// <cite>importantTask()</cite> 将被调用
+<a href="#id434"><span class="problematic" id="id435">``</span></a><a href="#id436"><span class="problematic" id="id437">`</span></a></p>
+<p>对于强制类型转换这里有几个例子:</p>
+<p><a href="#id438"><span class="problematic" id="id439">``</span></a><a href="#id440"><span class="problematic" id="id441">`</span></a>javascript</p>
+<dl class="docutils">
+<dt>var number = 1,</dt>
+<dd><p class="first last">string = &#8220;1&#8221;,
+bool = false;</p>
+</dd>
+</dl>
+<p>number;
+// 1</p>
+<p>number + &#8220;&#8221;;
+// &#8220;1&#8221;</p>
+<p>string;
+// &#8220;1&#8221;</p>
+<p>+string;
+// 1</p>
+<p>+string++;
+// 1</p>
+<p>string;
+// 2</p>
+<p>bool;
+// false</p>
+<p>+bool;
+// 0</p>
+<p>bool + &#8220;&#8221;;
+// &#8220;false&#8221;
+<a href="#id442"><span class="problematic" id="id443">``</span></a><a href="#id444"><span class="problematic" id="id445">`</span></a></p>
+<p><a href="#id446"><span class="problematic" id="id447">``</span></a><a href="#id448"><span class="problematic" id="id449">`</span></a>javascript</p>
+<dl class="docutils">
+<dt>var number = 1,</dt>
+<dd><p class="first last">string = &#8220;1&#8221;,
+bool = true;</p>
+</dd>
+</dl>
+<p>string === number;
+// false</p>
+<p>string === number + &#8220;&#8221;;
+// true</p>
+<p>+string === number;
+// true</p>
+<p>bool === number;
+// false</p>
+<p>+bool === number;
+// true</p>
+<p>bool === string;
+// false</p>
+<p>bool === !!string;
+// true
+<a href="#id450"><span class="problematic" id="id451">``</span></a><a href="#id452"><span class="problematic" id="id453">`</span></a></p>
+<p><a href="#id454"><span class="problematic" id="id455">``</span></a><a href="#id456"><span class="problematic" id="id457">`</span></a>javascript</p>
+<p>var num = 2.5;</p>
+<p>parseInt(num, 10);</p>
+<p>// 等价于...</p>
+<p>~~num;</p>
+<p>num &gt;&gt; 0;</p>
+<p>num &gt;&gt;&gt; 0;</p>
+<p>// 结果都是 2</p>
+<p>// 时刻牢记心底, 负值将被区别对待...</p>
+<p>var neg = -2.5;</p>
+<p>parseInt(neg, 10);</p>
+<p>// 等价于...</p>
+<p>~~neg;</p>
+<p>neg &gt;&gt; 0;</p>
+<p>// 结果都是 -2
+// 但是...</p>
+<p>neg &gt;&gt;&gt; 0;</p>
+<p>// 结果即是 4294967294</p>
+<p><a href="#id458"><span class="problematic" id="id459">``</span></a><a href="#id460"><span class="problematic" id="id461">`</span></a></p>
+</div></blockquote>
+</li>
+<li><p class="first">字符串转换为整数</p>
+</li>
+</ul>
+<p>将字符串转换为整数有以下几种方式，可以在[这里](<a class="reference external" href="http://jsperf.com/converting-string-to-int/2">http://jsperf.com/converting-string-to-int/2</a>)进行测试对比：
+<a href="#id462"><span class="problematic" id="id463">``</span></a><a href="#id464"><span class="problematic" id="id465">`</span></a>javascript</p>
+<blockquote>
+<div>var number1 = &#8220;45&#8221;;
+// ParseInt() Test on chrome for mac:31% slower
+var i = parseInt(number1);
+// Using unary Test on chrome for mac:67% slower
+var j = +number1;
+// Number constructor Test on chrome for mac:59% slower
+var k = Number(number1);
+// By multplication Test on chrome for mac:69% slower
+var l = number1 * 1;
+// parseInt with Test on chrome for mac:radix ±3.85% fastest
+var m = parseInt(number1, 10);</div></blockquote>
+<p><a href="#id466"><span class="problematic" id="id467">``</span></a>`
+所以推荐使用 parseInt(number1, 10) 这种方式，不过 +number1 更为简单，在操作次数极少的情况下也可以酌情使用。</p>
+<p>##### 对比运算</p>
+<dl class="docutils">
+<dt><a href="#id468"><span class="problematic" id="id469">``</span></a><a href="#id470"><span class="problematic" id="id471">`</span></a>javascript</dt>
+<dd><p class="first">// 当只是判断一个 array 是否有长度，相对于使用这个:
+if (array.length &gt; 0) ...</p>
+<p>// ...判断真伪, 请使用这种:
+if (array.length) ...</p>
+<p>// 当只是判断一个 array 是否为空，相对于使用这个:
+if (array.length === 0) ...</p>
+<p>// ...判断真伪, 请使用这种:
+if (!array.length) ...</p>
+<p>// 当只是判断一个 string 是否为空，相对于使用这个:
+if (string !== &#8220;&#8221;) ...</p>
+<p>// ...判断真伪, 请使用这种:
+if (string) ...</p>
+<p>// 当只是判断一个 string 是为空，相对于使用这个:
+if (string === &#8220;&#8221;) ...</p>
+<p>// ...判断真伪, 请使用这种:
+if (!string) ...</p>
+<p>// 当只是判断一个引用是为真，相对于使用这个:
+if (foo === true) ...</p>
+<p>// ...判断只需像你所想，享受内置功能的好处:
+if (foo) ...</p>
+<p>// 当只是判断一个引用是为假，相对于使用这个:
+if (foo === false) ...</p>
+<p>// ...使用叹号将其转换为真
+if (!foo) ...</p>
+<p>// ...需要注意的是：这个将会匹配 0, &#8220;&#8221;, null, undefined, NaN
+// 如果你 _必须_ 是布尔类型的 false，请这样用：
+if (foo === false) ...</p>
+<p>// 如果想计算一个引用可能是 null 或者 undefined，但并不是 false, &#8220;&#8221; 或者 0,
+// 相对于使用这个：
+if (foo === null || foo === undefined) ...</p>
+<p>// ...享受 == 类型强制转换的好处，像这样:
+if (foo == null) ...</p>
+<p class="last">// 谨记，使用 == 将会令 <cite>null</cite> 匹配 <cite>null</cite> 和 <cite>undefined</cite>
+// 但不是 <cite>false</cite>，&#8221;&#8221; 或者 0
+null == undefined</p>
+</dd>
+</dl>
+<p><a href="#id472"><span class="problematic" id="id473">``</span></a><a href="#id474"><span class="problematic" id="id475">`</span></a></p>
+<p>总是判断最好、最精确的值，上述是指南而非教条。</p>
+<dl class="docutils">
+<dt><a href="#id476"><span class="problematic" id="id477">``</span></a><a href="#id478"><span class="problematic" id="id479">`</span></a>javascript</dt>
+<dd><p class="first">// 类型转换和对比运算说明
+// 首次 <cite>===</cite>，<cite>==</cite> 次之 (除非需要松散类型的对比)
+// <cite>===</cite> 总不做类型转换，这意味着:
+&#8220;1&#8221; === 1;
+// false</p>
+<p>// <cite>==</cite> 会转换类型，这意味着:
+&#8220;1&#8221; == 1;
+// true</p>
+<p>// 布尔, 真 &amp; 伪
+// 布尔:
+true, false</p>
+<p>// 真:
+&#8220;foo&#8221;, 1</p>
+<p class="last">// 伪:
+&#8220;&#8221;, 0, null, undefined, NaN, void 0</p>
+</dd>
+</dl>
+<p><a href="#id480"><span class="problematic" id="id481">``</span></a><a href="#id482"><span class="problematic" id="id483">`</span></a></p>
+<p>##### Misc</p>
+<p>这个部分将要说明的想法和理念都并非教条。相反更鼓励对现存实践保持好奇，以尝试提供完成一般 JavaScript 编程任务的更好方案。</p>
+<ul>
+<li><p class="first">提前返回值提升代码的可读性并且没有太多性能上的差别</p>
+<blockquote>
+<div><p><a href="#id484"><span class="problematic" id="id485">``</span></a><a href="#id486"><span class="problematic" id="id487">`</span></a>javascript</p>
+<p>// 不好:
+function returnLate(foo) {</p>
+<blockquote>
+<div><p>var ret;</p>
+<dl class="docutils">
+<dt>if (foo) {</dt>
+<dd><p class="first last">ret = &#8220;foo&#8221;;</p>
+</dd>
+<dt>} else {</dt>
+<dd><p class="first last">ret = &#8220;quux&#8221;;</p>
+</dd>
+</dl>
+<p>}
+return ret;</p>
+</div></blockquote>
+<p>}</p>
+<p>// 好:
+function returnEarly(foo) {</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>if (foo) {</dt>
+<dd><p class="first last">return &#8220;foo&#8221;;</p>
+</dd>
+</dl>
+<p>}
+return &#8220;quux&#8221;;</p>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p class="first">for循环遍历</p>
+<blockquote>
+<div><p><a href="#id488"><span class="problematic" id="id489">``</span></a><a href="#id490"><span class="problematic" id="id491">`</span></a>javascript
+// for循环遍历:
+for(var i = 0, l = arr.length; i &lt; l; i++){</p>
+<blockquote>
+<div><p>// doSomething here</p>
+</div></blockquote>
+<p>}
+// 上面的方式优于:
+for(var i = 0; i &lt; arr.length; i++){</p>
+<blockquote>
+<div><p>// doSomething here</p>
+</div></blockquote>
+<p>}
+// 前一种方式只会计算一次 arr 的长度，而后一种方式会计算 arr.length + 1 次，效率比较低</p>
+<p><a href="#id492"><span class="problematic" id="id493">``</span></a><a href="#id494"><span class="problematic" id="id495">`</span></a></p>
+</div></blockquote>
+</li>
+</ul>
+<p>## 保持一致性.</p>
+<p>当你在编辑代码之前, 先花一些时间查看一下现有代码的风格. 如果他们给算术运算符添加了空格, 你也应该添加. 如果他们的注释使用一个个星号盒子, 那么也请你使用这种方式.</p>
+<p>代码风格中一个关键点是整理一份常用词汇表, 开发者认同它并且遵循, 这样在代码中就能统一表述. 我们在这提出了一些全局上的风格规则, 但也要考虑自身情况形成自己的代码风格. 但如果你添加的代码和现有的代码有很大的区别, 这就让阅读者感到很不和谐. 所以, 避免这种情况的发生.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="articleComments">
+</div>
+</div>
+<footer>
+<div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+<a href="W002-What-should-pyer-know.html" class="btn btn-neutral" title="初级Python开发工程师需要掌握" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+</div>
+<hr/>
+<script>
+</script>
+<hr/><div role="contentinfo">
+<p>
+&copy; Copyright 2017, River.
+</p>
+</div>
+Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script type="text/javascript">
+var DOCUMENTATION_OPTIONS = {
+URL_ROOT:'../',
+VERSION:'0.9',
+COLLAPSE_INDEX:false,
+FILE_SUFFIX:'.html',
+HAS_SOURCE:  true,
+SOURCELINK_SUFFIX: ''
+};
+</script>
+<script type="text/javascript" src="../static/jquery.js"></script>
+<script type="text/javascript" src="../static/underscore.js"></script>
+<script type="text/javascript" src="../static/doctools.js"></script>
+<script type="text/javascript" src="../static/js/theme.js"></script>
+<script type="text/javascript">
+jQuery(function () {
+SphinxRtdTheme.StickyNav.enable();
+});
+</script>
+</body>
+</html>
