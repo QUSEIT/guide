@@ -316,8 +316,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'QPython', u'QPython User Guide',
-     author, 'QPython', 'One line description of project.',
+    (master_doc, 'Quseit Guide', u'Quseit Guide',
+     author, 'Quseit Guide', 'One line description of project.',
      'Miscellaneous'),
 ]
 
