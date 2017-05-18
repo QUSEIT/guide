@@ -54,7 +54,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'QPython'
+project = u'Quseit Guide'
 copyright = u'2017, River'
 author = u'River'
 
@@ -301,7 +301,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'qpython', u'QPython Documentation',
+    (master_doc, 'quseit guide', u'quseit guide Documentation',
      [author], 1)
 ]
 
