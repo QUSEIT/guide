@@ -54,7 +54,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'优趣 Blog'
+project = u'QPython'
 copyright = u'2017, River'
 author = u'River'
 
