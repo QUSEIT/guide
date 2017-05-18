@@ -8,6 +8,9 @@ APP小组
 
    U200/W002-What-should-pyer-know
    U200/A001-Javascript-Style
+   U200/P002-Quseit-Django-Authentication-Python
+   U200/P001-Quseit-Alipay-Python
+
 
 技术支持
 ==========

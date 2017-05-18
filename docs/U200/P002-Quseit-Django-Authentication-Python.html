@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Django用户验证系统 &mdash; 优趣 Blog 0.9 documentation</title>
+<link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
+<link rel="index" title="Index"
+href="../genindex.html"/>
+<link rel="search" title="Search" href="../search.html"/>
+<link rel="top" title="优趣 Blog 0.9 documentation" href="../index.html"/>
+<link rel="up" title="APP小组" href="../guide.html"/>
+<link rel="next" title="支付宝Python 接入使用说明" href="P001-Quseit-Alipay-Python.html"/>
+<link rel="prev" title="JavaScript 编码规范指南" href="A001-Javascript-Style.html"/>
+<script src="../static/js/modernizr.min.js"></script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav data-toggle="wy-nav-shift" class="wy-nav-side">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a href="../index.html" class="icon icon-home"> 优趣 Blog
+</a>
+<div class="version">
+0.9
+</div>
+<div role="search">
+<form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+<input type="text" name="q" placeholder="Search docs" />
+<input type="hidden" name="check_keywords" value="yes" />
+<input type="hidden" name="area" value="default" />
+</form>
+</div>
+</div>
+<div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../guide.html">APP小组</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../guide.html#id1">200小组</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="W002-What-should-pyer-know.html">初级Python开发工程师需要掌握</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A001-Javascript-Style.html">JavaScript 编码规范指南</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Django用户验证系统</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P001-Quseit-Alipay-Python.html">支付宝Python 接入使用说明</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guide.html#id2">技术支持</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+<nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+<i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+<a href="../index.html">优趣 Blog</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div role="navigation" aria-label="breadcrumbs navigation">
+<ul class="wy-breadcrumbs">
+<li><a href="../index.html">Docs</a> &raquo;</li>
+<li><a href="../guide.html">APP小组</a> &raquo;</li>
+<li>Django用户验证系统</li>
+<li class="wy-breadcrumbs-aside">
+<a href="../_sources/U200/P002-Quseit-Django-Authentication-Python.rst.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+<div itemprop="articleBody">
+<p>Title: Django 用户验证系统简单使用教程 Date: 2016-07-13 Category: U200</p>
+<div class="section" id="django">
+<h1>Django用户验证系统<a class="headerlink" href="#django" title="Permalink to this headline">¶</a></h1>
+<p>django自带有一套自身的用户验证系统，可以参考官方文档（连接到django
+authentication system）:</p>
+<p><a class="reference external" href="https://docs.djangoproject.com/en/1.9/topics/auth/default/#user-objects">https://docs.djangoproject.com/en/1.9/topics/auth/default/#user-objects</a></p>
+<p>下面是django用户系统的一个小案例（看案例前建议先浏览一下官方文档用户系统验证部分）</p>
+<p>新建django项目：项目结构很简单，只添加了四个html文件，index.html（首页）,
+login.html（登陆页）, register.html（注册页）, profile.html（个人中心）</p>
+<p>其他是django自带的。基本只需修改views.py, urls.py文件</p>
+<p>现在有一个需求是：</p>
+<p>（1）实现登录注册；</p>
+<p>（2）登陆的用户可以从首页index进入个人中心profile；</p>
+<p>（3）未登录用户访问个人中心profile将自动跳转到登陆页面；</p>
+<p>（4）用户可以退出登陆；</p>
+<p>需求说完了，直接上代码！！！</p>
+<p>index.html代码：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;首页&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;这是首页&lt;/h1&gt;
+{% if user.is_authenticated %}
+hello {{user.username}}, 欢迎您
+&lt;a href=&quot;&quot;&gt;退出登录&lt;/a&gt;
+{% else %}
+您还没登陆呢！！！
+&lt;a href=&quot;&quot;&gt;登陆&lt;/a&gt;
+&lt;a href=&quot;&quot;&gt;注册&lt;/a&gt;
+{% endif %}
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</div>
+<p style="color:blue;font-size:15px"><p>user.is_authenticated 是 django提供的一个用户验证方法，校验用户是否是合法的(请再次参考官方文档)</p>
+</p><p>login.html代码：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;登陆&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;XXX登陆页面&lt;/h1&gt;
+&lt;form method=&quot;POST&quot;&gt;
+邮箱：&lt;input type=&quot;email&quot; name=&quot;email&quot; id=&quot;email&quot;&gt;
+密码：&lt;input type=&quot;password&quot; name=&quot;pw&quot; id=&quot;pw&quot;&gt;
+&lt;input type=&quot;submit&quot; value=&quot;点击注册&quot;&gt;
+{% csrf_token %}
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</div>
+<p style="color:blue;font-size:15px"><p>{% csrf_token %}据说是防跨域攻击, 想深入了解的童鞋戳下面链接：</p>
+</p><p><a class="reference external" href="http://www.jianshu.com/p/a178f08d9389">http://www.jianshu.com/p/a178f08d9389</a></p>
+<p>regitser.html代码：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>   &lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;XXX注册页面&lt;/h1&gt;
+&lt;form method=&quot;POST&quot;&gt;
+用户名:&lt;input type=&quot;text&quot; name=&quot;name&quot; id=&quot;name&quot;&gt;&lt;br&gt;
+邮箱：&lt;input type=&quot;email&quot; name=&quot;email&quot; id=&quot;email&quot;&gt;&lt;br&gt;
+密码：&lt;input type=&quot;password&quot; name=&quot;pw&quot; id=&quot;pw&quot;&gt;&lt;br&gt;
+&lt;input type=&quot;submit&quot; value=&quot;点击注册&quot;&gt;
+{% csrf_token %}
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+profile.html代码:
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;个人中心&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;个人中心&lt;/h1&gt;
+&lt;b&gt;hello,{{ user.username }}&lt;/b&gt; &lt;a href=&quot;/logout&quot;&gt;退出登录&lt;/a&gt;
+&lt;p&gt;账户创建时间：{{ user.date_joined}}&lt;/p&gt;
+&lt;P&gt;上一次登陆时间：{{ user.last_login }}&lt;/P&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</div>
+<p style="color:blue;font-size:15px"><p>{user.date_joined} 以及 {user.last_login} 都是django提供的参数（更多参数,再次请参考官方文档），分别是用户注册时间、用户上一次登陆时间。</p>
+</p><p>views.py代码：</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">#coding:utf-8</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">redirect</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+<span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth</span> <span class="kn">import</span> <span class="n">authenticate</span><span class="p">,</span> <span class="n">login</span><span class="p">,</span> <span class="n">logout</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.decorators</span> <span class="kn">import</span> <span class="n">login_required</span>
+<span class="k">def</span> <span class="nf">register</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;GET&#39;</span><span class="p">:</span>
+<span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;register.html&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+<span class="n">username</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="articleComments">
+</div>
+</div>
+<footer>
+<div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+<a href="P001-Quseit-Alipay-Python.html" class="btn btn-neutral float-right" title="支付宝Python 接入使用说明" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+<a href="A001-Javascript-Style.html" class="btn btn-neutral" title="JavaScript 编码规范指南" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+</div>
+<hr/>
+<script>
+</script>
+<hr/><div role="contentinfo">
+<p>
+&copy; Copyright 2017, River.
+</p>
+</div>
+Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script type="text/javascript">
+var DOCUMENTATION_OPTIONS = {
+URL_ROOT:'../',
+VERSION:'0.9',
+COLLAPSE_INDEX:false,
+FILE_SUFFIX:'.html',
+HAS_SOURCE:  true,
+SOURCELINK_SUFFIX: '.txt'
+};
+</script>
+<script type="text/javascript" src="../static/jquery.js"></script>
+<script type="text/javascript" src="../static/underscore.js"></script>
+<script type="text/javascript" src="../static/doctools.js"></script>
+<script type="text/javascript" src="../static/js/theme.js"></script>
+<script type="text/javascript">
+jQuery(function () {
+SphinxRtdTheme.StickyNav.enable();
+});
+</script>
+</body>
+</html>
