@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORMLite-android ORM 框架 &mdash; Quseit Guide 0.9 documentation</title>
+<link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
+<link rel="index" title="Index"
+href="../genindex.html"/>
+<link rel="search" title="Search" href="../search.html"/>
+<link rel="top" title="Quseit Guide 0.9 documentation" href="../index.html"/>
+<link rel="up" title="APP小组" href="../guide.html"/>
+<link rel="next" title="初级Python开发工程师需要掌握" href="../U200/W002-What-should-pyer-know.html"/>
+<link rel="prev" title="优趣安卓应用开发框架简介" href="A001-Quseit-Android-Framework.html"/>
+<script src="../static/js/modernizr.min.js"></script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav data-toggle="wy-nav-shift" class="wy-nav-side">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a href="../index.html" class="icon icon-home"> Quseit Guide
+</a>
+<div class="version">
+0.9
+</div>
+<div role="search">
+<form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+<input type="text" name="q" placeholder="Search docs" />
+<input type="hidden" name="check_keywords" value="yes" />
+<input type="hidden" name="area" value="default" />
+</form>
+</div>
+</div>
+<div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../guide.html">APP小组</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="A001-Quseit-Android-Framework.html">优趣安卓应用开发框架简介</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ORMLite-android ORM 框架</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#">介绍</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ormlit-jar">下载ORMLit jar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bean">创建 Bean 类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dao">编写 DAO 类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dao">使用 DAO 类</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#">添加记录</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#">查询记录</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#">删除记录</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guide.html#id1">200小组</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide.html#id2">技术支持</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+<nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+<i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+<a href="../index.html">Quseit Guide</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div role="navigation" aria-label="breadcrumbs navigation">
+<ul class="wy-breadcrumbs">
+<li><a href="../index.html">Docs</a> &raquo;</li>
+<li><a href="../guide.html">APP小组</a> &raquo;</li>
+<li>ORMLite-android ORM 框架</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+<div itemprop="articleBody">
+<p>Title: ORMLite-android SDK 使用方法
+Date: 2016-05-31 13:00
+Category: APP</p>
+<div class="section" id="ormlite-android-orm">
+<span id="ormlite-android-orm"></span><h1>ORMLite-android ORM 框架<a class="headerlink" href="#ormlite-android-orm" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="">
+<span id="id1"></span><h2>介绍<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<p>ORMLite-android 是 Android SQLite 的 ORM 框架，这篇文章将详细介绍 ORMLite-android 的使用方法。</p>
+</div>
+<div class="section" id="ormlit-jar">
+<span id="ormlit-jar"></span><h2>下载ORMLit jar<a class="headerlink" href="#ormlit-jar" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<p>要使用这个框架需要两个包，分别是 ormlite-core.jar 和 ormlite-android.jar 包。</p>
+<p>下载地址为 <a class="reference external" href="http://ormlite.com/releases/">http://ormlite.com/releases/</a></p>
+<p>网站可能会提供各种版本的包，下载较新的版本就好了。</p>
+</div>
+<div class="section" id="bean">
+<span id="bean"></span><h2>创建 Bean 类<a class="headerlink" href="#bean" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<p>这个步骤的作用实际上就是告知 ORMLite-android 我们要创建什么样的表。
+下面举一个例子：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">quseit</span><span class="o">.</span><span class="n">librarytest</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">com.j256.ormlite.field.DatabaseField</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">com.j256.ormlite.table.DatabaseTable</span><span class="p">;</span>
+<span class="o">/**</span>
+<span class="o">*</span>
+<span class="o">*</span> <span class="n">Created</span> <span class="n">by</span> <span class="n">zhimeng</span> <span class="n">on</span> <span class="mi">2016</span><span class="o">/</span><span class="mi">5</span><span class="o">/</span><span class="mf">17.</span>
+<span class="o">*/</span>
+<span class="nd">@DatabaseTable</span><span class="p">(</span><span class="n">tableName</span> <span class="o">=</span> <span class="s2">&quot;music&quot;</span><span class="p">)</span>
+<span class="n">public</span> <span class="k">class</span> <span class="nc">Music</span> <span class="p">{</span>
+<span class="nd">@DatabaseField</span><span class="p">(</span><span class="n">generatedId</span> <span class="o">=</span> <span class="n">true</span><span class="p">)</span>
+<span class="n">public</span> <span class="nb">int</span> <span class="nb">id</span><span class="p">;</span>
+<span class="nd">@DatabaseField</span><span class="p">(</span><span class="n">columnName</span> <span class="o">=</span> <span class="s2">&quot;name&quot;</span><span class="p">)</span>
+<span class="n">public</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>这样类似的ORM框架都把数据表中的每一行数据当作一个对象来处理。
+我们创建了这个Music类，代表我们希望创建一个相应的表用来存储多个Music类的信息。</p>
+<blockquote>
+<div>&#64;DatabaseTable(tableName = &quot;music&quot;)//这行代表这个表的表名为music
+&#64;DatabaseField(generatedId = true)//表示id为主键且自动生成
+&#64;DatabaseField(columnName = &quot;name&quot;)//表示该表拥有一个叫 name 的字段</div></blockquote>
+</div>
+<div class="section" id="dao">
+<span id="dao"></span><h2>编写 DAO 类<a class="headerlink" href="#dao" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<p>DAO 类用于操作数据库，我们需要为不同的Bean类创建DAO类。</p>
+<p>如果我们希望操作上面我们创建的 music 表，那我们可以为之创建一个 DAO 类，名字叫MusicDatabaseHelper，代码及说明如下：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">quseit</span><span class="o">.</span><span class="n">ormliteapplication</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">android.content.Context</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">android.database.sqlite.SQLiteDatabase</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">com.j256.ormlite.dao.Dao</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">com.j256.ormlite.support.ConnectionSource</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">com.j256.ormlite.table.TableUtils</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.SQLException</span><span class="p">;</span>
+<span class="o">/**</span>
+<span class="o">*</span>
+<span class="o">*</span> <span class="n">Created</span> <span class="n">by</span> <span class="n">zhimeng</span> <span class="n">on</span> <span class="mi">2016</span><span class="o">/</span><span class="mi">5</span><span class="o">/</span><span class="mf">31.</span>
+<span class="o">*/</span>
+<span class="n">public</span> <span class="k">class</span> <span class="nc">MusicModel</span> <span class="n">extends</span> <span class="n">OrmLiteSqliteOpenHelper</span> <span class="p">{</span>
+<span class="n">private</span> <span class="n">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">TABLE_NAME</span> <span class="o">=</span> <span class="s2">&quot;sqlite-test.db&quot;</span><span class="p">;</span>
+<span class="n">private</span> <span class="n">static</span> <span class="n">MusicModel</span> <span class="n">model</span><span class="p">;</span>
+<span class="n">private</span> <span class="n">Dao</span><span class="o">&lt;</span><span class="n">Music</span><span class="p">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">userDao</span><span class="p">;</span>
+<span class="n">public</span> <span class="n">static</span> <span class="n">MusicModel</span> <span class="n">newInstance</span><span class="p">(</span><span class="n">Context</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">model</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="k">return</span> <span class="n">model</span><span class="p">;</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">new</span> <span class="n">MusicModel</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+<span class="k">return</span> <span class="n">model</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">private</span> <span class="n">MusicModel</span><span class="p">(</span><span class="n">Context</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+<span class="nb">super</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">TABLE_NAME</span><span class="p">,</span> <span class="n">null</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nd">@Override</span>
+<span class="n">public</span> <span class="n">void</span> <span class="n">onCreate</span><span class="p">(</span><span class="n">SQLiteDatabase</span> <span class="n">database</span><span class="p">,</span> <span class="n">ConnectionSource</span> <span class="n">connectionSource</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">try</span> <span class="p">{</span>
+<span class="n">TableUtils</span><span class="o">.</span><span class="n">createTable</span><span class="p">(</span><span class="n">connectionSource</span><span class="p">,</span> <span class="n">Music</span><span class="o">.</span><span class="n">class</span><span class="p">);</span>
+<span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">SQLException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+<span class="n">e</span><span class="o">.</span><span class="n">printStackTrace</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="p">}</span>
+<span class="nd">@Override</span>
+<span class="n">public</span> <span class="n">void</span> <span class="n">onUpgrade</span><span class="p">(</span><span class="n">SQLiteDatabase</span> <span class="n">database</span><span class="p">,</span> <span class="n">ConnectionSource</span> <span class="n">connectionSource</span><span class="p">,</span> <span class="nb">int</span> <span class="n">oldVersion</span><span class="p">,</span> <span class="nb">int</span> <span class="n">newVersion</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">try</span> <span class="p">{</span>
+<span class="n">TableUtils</span><span class="o">.</span><span class="n">dropTable</span><span class="p">(</span><span class="n">connectionSource</span><span class="p">,</span> <span class="n">Music</span><span class="o">.</span><span class="n">class</span><span class="p">,</span> <span class="n">true</span><span class="p">);</span>
+<span class="n">onCreate</span><span class="p">(</span><span class="n">database</span><span class="p">,</span> <span class="n">connectionSource</span><span class="p">);</span>
+<span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">SQLException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+<span class="n">e</span><span class="o">.</span><span class="n">printStackTrace</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="p">}</span>
+<span class="n">public</span> <span class="n">Dao</span><span class="o">&lt;</span><span class="n">Music</span><span class="p">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">getDao</span><span class="p">()</span> <span class="n">throws</span> <span class="n">SQLException</span> <span class="p">{</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">userDao</span> <span class="o">==</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+<span class="n">userDao</span> <span class="o">=</span> <span class="n">getDao</span><span class="p">(</span><span class="n">Music</span><span class="o">.</span><span class="n">class</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">return</span> <span class="n">userDao</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nd">@Override</span>
+<span class="n">public</span> <span class="n">void</span> <span class="n">close</span><span class="p">()</span> <span class="p">{</span>
+<span class="nb">super</span><span class="o">.</span><span class="n">close</span><span class="p">();</span>
+<span class="n">userDao</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>下面解释类成员和方法的意思：</p>
+<ul class="simple">
+<li>private static final String TABLE_NAME
+代表操作所在的数据库。</li>
+<li>private Dao&lt;Music, Integer&gt; musicDao
+这个就是所谓的DAO对象了。</li>
+<li>public void onCreate(SQLiteDatabase database, ConnectionSource connectionSource)
+需要重写的方法，写法可以固定像上面那样写，只要把Music.class替换成你创建的Bean类就好。</li>
+<li>public void onUpgrade(SQLiteDatabase database, ConnectionSource connectionSource, int oldVersion, int newVersion)
+需要重写的方法，写法可以固定像上面那样写，只要把Music.class替换成你创建的Bean类就好。</li>
+<li>public Dao&lt;Music, Integer&gt; getDao()
+获取相应的 DAO 类。</li>
+<li>public void close()
+不再使用该 DatabaseHelper ，我们需要释放相关资源。</li>
+</ul>
+</div>
+<div class="section" id="dao">
+<span id="id2"></span><h2>使用 DAO 类<a class="headerlink" href="#dao" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<p>当我们创建好后如何使用它操作数据库呢</p>
+<div class="section" id="">
+<span id="id3"></span><h3>添加记录<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>添加记录代码如下</div></blockquote>
+<div class="highlight-default"><div class="highlight"><pre><span></span>        <span class="n">Music</span> <span class="n">music</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Music</span><span class="p">();</span>
+<span class="n">music</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;sound.mp3&quot;</span><span class="p">;</span>
+<span class="k">try</span> <span class="p">{</span>
+<span class="n">helper</span><span class="o">.</span><span class="n">getUserDao</span><span class="p">()</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">music</span><span class="p">);</span>
+<span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">SQLException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+<span class="n">e</span><span class="o">.</span><span class="n">printStackTrace</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="">
+<span id="id4"></span><h3>查询记录<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>查询记录代码如下：</div></blockquote>
+<div class="highlight-default"><div class="highlight"><pre><span></span>        try {
+return DatabaseHelper.getHelper(this).getDao().queryForAll();//返回表中所有记录，返回数据类型为 List&lt;Music&gt;
+return DatabaseHelper.getHelper(this).getDao().queryForEq(&quot;name&quot;, &quot;sound.mp3&quot;);//返回表中name = sound.mp3的记录，返回数据类型为 List&lt;Music&gt;
+} catch (SQLException e) {
+e.printStackTrace();
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="">
+<span id="id5"></span><h3>删除记录<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>删除记录代码如下：</div></blockquote>
+<div class="highlight-default"><div class="highlight"><pre><span></span>    <span class="n">public</span> <span class="n">void</span> <span class="n">delete</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Music</span><span class="o">&gt;</span> <span class="n">musics</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">try</span> <span class="p">{</span>
+<span class="n">DatabaseHelper</span><span class="o">.</span><span class="n">getHelper</span><span class="p">(</span><span class="n">this</span><span class="p">)</span><span class="o">.</span><span class="n">getDao</span><span class="p">()</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">musics</span><span class="p">);</span> <span class="o">//</span><span class="n">我们可以将上面查询的结果作为此方法的参数来删除相关信记录</span>
+<span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">SQLException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+<span class="n">e</span><span class="o">.</span><span class="n">printStackTrace</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="articleComments">
+</div>
+</div>
+<footer>
+<div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+<a href="../U200/W002-What-should-pyer-know.html" class="btn btn-neutral float-right" title="初级Python开发工程师需要掌握" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+<a href="A001-Quseit-Android-Framework.html" class="btn btn-neutral" title="优趣安卓应用开发框架简介" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+</div>
+<hr/>
+<script>
+</script>
+<hr/><div role="contentinfo">
+<p>
+&copy; Copyright 2017, River.
+</p>
+</div>
+Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script type="text/javascript">
+var DOCUMENTATION_OPTIONS = {
+URL_ROOT:'../',
+VERSION:'0.9',
+COLLAPSE_INDEX:false,
+FILE_SUFFIX:'.html',
+HAS_SOURCE:  true,
+SOURCELINK_SUFFIX: '.txt'
+};
+</script>
+<script type="text/javascript" src="../static/jquery.js"></script>
+<script type="text/javascript" src="../static/underscore.js"></script>
+<script type="text/javascript" src="../static/doctools.js"></script>
+<script type="text/javascript" src="../static/js/theme.js"></script>
+<script type="text/javascript">
+jQuery(function () {
+SphinxRtdTheme.StickyNav.enable();
+});
+</script>
+</body>
+</html>

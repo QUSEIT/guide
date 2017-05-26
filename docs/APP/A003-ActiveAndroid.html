@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ActiveAndroid SDK使用教程 &mdash; Quseit Guide 0.9 documentation</title>
+<link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
+<link rel="index" title="Index"
+href="../genindex.html"/>
+<link rel="search" title="Search" href="../search.html"/>
+<link rel="top" title="Quseit Guide 0.9 documentation" href="../index.html"/>
+<script src="../static/js/modernizr.min.js"></script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav data-toggle="wy-nav-shift" class="wy-nav-side">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a href="../index.html" class="icon icon-home"> Quseit Guide
+</a>
+<div class="version">
+0.9
+</div>
+<div role="search">
+<form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+<input type="text" name="q" placeholder="Search docs" />
+<input type="hidden" name="check_keywords" value="yes" />
+<input type="hidden" name="area" value="default" />
+</form>
+</div>
+</div>
+<div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide.html">APP小组</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide.html#id1">200小组</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide.html#id2">技术支持</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+<nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+<i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+<a href="../index.html">Quseit Guide</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div role="navigation" aria-label="breadcrumbs navigation">
+<ul class="wy-breadcrumbs">
+<li><a href="../index.html">Docs</a> &raquo;</li>
+<li>ActiveAndroid SDK使用教程</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+<div itemprop="articleBody">
+<p>Title: ActiveAndroid SDK使用教程
+Date: 2016-05-31 13:00
+Category: APP</p>
+<div class="section" id="activeandroid-sdk">
+<span id="activeandroid-sdk"></span><h1>ActiveAndroid SDK使用教程<a class="headerlink" href="#activeandroid-sdk" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="">
+<span id="id1"></span><h2>简介<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<p>使用 ActiveAndroid 可以帮助我们更方便地操作 SQLite ，由于 ActiveAndroid 本身已经非常简单，在 Library 中我们暂时就不再做封装了。
+在这篇文章里有 ActiveAndroid 使用的详细介绍和可能出现的问题的注意事项。</p>
+</div>
+<div class="section" id="activeandroid">
+<span id="activeandroid"></span><h2>下载ActiveAndroid工程文件<a class="headerlink" href="#activeandroid" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<p>下载地址为 <a class="reference external" href="https://github.com/pardom/ActiveAndroid">https://github.com/pardom/ActiveAndroid</a></p>
+</div>
+<div class="section" id="">
+<span id="id2"></span><h2>设置环境<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<div class="section" id="">
+<span id="id3"></span><h3>步骤 1<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<p>将下载下来的整过工程文件作为Module导入进来</p>
+</div>
+<div class="section" id="">
+<span id="id4"></span><h3>步骤 2<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<p>在 AndroidMenifest.xml 文件中为 Application 添加属性</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>        <span class="o">&lt;</span><span class="n">meta</span><span class="o">-</span><span class="n">data</span>
+<span class="n">android</span><span class="p">:</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;AA_DB_NAME&quot;</span>
+<span class="n">android</span><span class="p">:</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;database.db&quot;</span> <span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">meta</span><span class="o">-</span><span class="n">data</span>
+<span class="n">android</span><span class="p">:</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;AA_DB_VERSION&quot;</span>
+<span class="n">android</span><span class="p">:</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;5&quot;</span> <span class="o">/&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="">
+<span id="id5"></span><h3>步骤 3<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<p>调整工程文件的build.gradle文件的下面这句话：</p>
+<blockquote>
+<div>classpath 'com.android.tools.build:gradle:1.5.0'
+应该是这个ActiveAndroid是比较老的框架了，如果gradle版本是2.0.0是不行的，1.5.0还可以</div></blockquote>
+</div>
+<div class="section" id="">
+<span id="id6"></span><h3>步骤 4<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<p>在 AndroidMenifest.xml 为 Application 添加 android:name=&quot;com.activeandroid.app.Application&quot; 属性</p>
+</div>
+<div class="section" id="">
+<span id="id7"></span><h3>注意事项<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<p>关于第二步，如果要使用自己的 Application 类，那么这个类继承 com.activeandroid.app.Application 就好了
+如果实在要继承其他的 Application 类，可以这样写以达到初始化目的，如：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>    <span class="n">public</span> <span class="k">class</span> <span class="nc">MyApplication</span> <span class="n">extends</span> <span class="o">***</span><span class="n">Application</span> <span class="p">{</span>
+<span class="nd">@Override</span>
+<span class="n">public</span> <span class="n">void</span> <span class="n">onCreate</span><span class="p">()</span> <span class="p">{</span>
+<span class="nb">super</span><span class="o">.</span><span class="n">onCreate</span><span class="p">();</span>
+<span class="n">ActiveAndroid</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">this</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nd">@Override</span>
+<span class="n">public</span> <span class="n">void</span> <span class="n">onTerminate</span><span class="p">()</span> <span class="p">{</span>
+<span class="nb">super</span><span class="o">.</span><span class="n">onTerminate</span><span class="p">();</span>
+<span class="n">ActiveAndroid</span><span class="o">.</span><span class="n">dispose</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="">
+<span id="id8"></span><h3>完成<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<p>环境建立完成，我们就可以开始操作数据库了。</p>
+</div>
+</div>
+<div class="section" id="">
+<span id="id9"></span><h2>建表<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<div class="section" id="">
+<span id="id10"></span><h3>代码及说明<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<p>按照如下方法创建相应的类，就相当于告诉 ActiveAndroid 创建相应的表，例子如下：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>        <span class="kn">import</span> <span class="nn">com.activeandroid.Model</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">com.activeandroid.annotation.Column</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">com.activeandroid.annotation.Table</span><span class="p">;</span>
+<span class="nd">@Table</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;music&quot;</span><span class="p">)</span>
+<span class="n">public</span> <span class="k">class</span> <span class="nc">Music</span> <span class="n">extends</span> <span class="n">Model</span> <span class="p">{</span>
+<span class="nd">@Column</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;path&quot;</span><span class="p">)</span>
+<span class="n">private</span> <span class="n">String</span> <span class="n">path</span><span class="p">;</span>
+<span class="n">public</span> <span class="n">void</span> <span class="n">setPath</span><span class="p">(</span><span class="n">String</span> <span class="n">path</span><span class="p">)</span> <span class="p">{</span>
+<span class="n">this</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">public</span> <span class="n">String</span> <span class="n">getPath</span><span class="p">()</span> <span class="p">{</span>
+<span class="k">return</span> <span class="n">path</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<blockquote>
+<div>&#64;Table(name = &quot;music&quot;) 这行中的 music 代表表名</div></blockquote>
+<blockquote>
+<div>&#64;Column(name = &quot;path&quot;) 这行中的 path 代表这个 music 表中有一个字段 path</div></blockquote>
+</div>
+<div class="section" id="">
+<span id="id11"></span><h3>注意事项<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<p>ActiveAndroid 为所有的表都会创建一些系统需要的字段，特别是id，如果需要类似字段，我们建议字段名不要取名太简单。
+如果新版本应用比旧版本多了新的表，安装新版本之后可能会出问题，请今后的开发者注意，可能需要清除一些记录</p>
+</div>
+</div>
+<div class="section" id="">
+<span id="id12"></span><h2>操作<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<div class="section" id="">
+<span id="id13"></span><h3>添加记录<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<p>以上面的 music 表为例，增加记录方法如下：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Music</span> <span class="n">music</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Music</span><span class="p">();</span>
+<span class="n">music</span><span class="o">.</span><span class="n">setPath</span><span class="p">(</span><span class="s2">&quot;storage/quseit.mp3&quot;</span><span class="p">);</span>
+<span class="n">music</span><span class="o">.</span><span class="n">save</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="">
+<span id="id14"></span><h3>删除记录<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">new</span> <span class="n">Delete</span><span class="p">()</span><span class="o">.</span><span class="n">from</span><span class="p">(</span><span class="n">Music</span><span class="o">.</span><span class="n">class</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s2">&quot;path = ?&quot;</span><span class="p">,</span> <span class="s2">&quot;storage/quseit.mp3&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">execute</span><span class="p">();</span><span class="o">//</span><span class="n">删除</span> <span class="n">path</span> <span class="o">=</span> <span class="n">storage</span><span class="o">/</span><span class="n">quseit</span><span class="o">.</span><span class="n">mp3</span> <span class="n">的记录</span>
+<span class="n">new</span> <span class="n">Delete</span><span class="p">()</span><span class="o">.</span><span class="n">from</span><span class="p">(</span><span class="n">Music</span><span class="o">.</span><span class="n">class</span><span class="p">)</span><span class="o">.</span><span class="n">execute</span><span class="p">();</span><span class="o">//</span><span class="n">删除所有记录</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="">
+<span id="id15"></span><h3>查询记录<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>    <span class="n">public</span> <span class="n">static</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Music</span><span class="o">&gt;</span> <span class="n">getAll</span><span class="p">()</span> <span class="p">{</span>
+<span class="k">return</span> <span class="n">new</span> <span class="n">Select</span><span class="p">()</span>
+<span class="o">.</span><span class="n">from</span><span class="p">(</span><span class="n">Music</span><span class="o">.</span><span class="n">class</span><span class="p">)</span>
+<span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s2">&quot;path = ?&quot;</span><span class="p">,</span> <span class="s2">&quot;music5.mp3&quot;</span><span class="p">)</span>
+<span class="o">.</span><span class="n">execute</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="">
+<span id="id16"></span><h2>更多操作待今后开发者补充<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="articleComments">
+</div>
+</div>
+<footer>
+<hr/>
+<script>
+</script>
+<hr/><div role="contentinfo">
+<p>
+&copy; Copyright 2017, River.
+</p>
+</div>
+Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script type="text/javascript">
+var DOCUMENTATION_OPTIONS = {
+URL_ROOT:'../',
+VERSION:'0.9',
+COLLAPSE_INDEX:false,
+FILE_SUFFIX:'.html',
+HAS_SOURCE:  true,
+SOURCELINK_SUFFIX: '.txt'
+};
+</script>
+<script type="text/javascript" src="../static/jquery.js"></script>
+<script type="text/javascript" src="../static/underscore.js"></script>
+<script type="text/javascript" src="../static/doctools.js"></script>
+<script type="text/javascript" src="../static/js/theme.js"></script>
+<script type="text/javascript">
+jQuery(function () {
+SphinxRtdTheme.StickyNav.enable();
+});
+</script>
+</body>
+</html>

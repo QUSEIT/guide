@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iOS代码Objective-C编程规范 &mdash; Quseit Guide 0.9 documentation</title>
+<link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
+<link rel="index" title="Index"
+href="../genindex.html"/>
+<link rel="search" title="Search" href="../search.html"/>
+<link rel="top" title="Quseit Guide 0.9 documentation" href="../index.html"/>
+<script src="../static/js/modernizr.min.js"></script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav data-toggle="wy-nav-shift" class="wy-nav-side">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a href="../index.html" class="icon icon-home"> Quseit Guide
+</a>
+<div class="version">
+0.9
+</div>
+<div role="search">
+<form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+<input type="text" name="q" placeholder="Search docs" />
+<input type="hidden" name="check_keywords" value="yes" />
+<input type="hidden" name="area" value="default" />
+</form>
+</div>
+</div>
+<div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide.html">APP小组</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide.html#id1">200小组</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide.html#id2">技术支持</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+<nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+<i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+<a href="../index.html">Quseit Guide</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div role="navigation" aria-label="breadcrumbs navigation">
+<ul class="wy-breadcrumbs">
+<li><a href="../index.html">Docs</a> &raquo;</li>
+<li>iOS代码Objective-C编程规范</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+<div itemprop="articleBody">
+<p>Title: iOS代码Objective-C编程规范
+Date: 2016-08-21 16:50:46
+Category: APP
+Tags: 资料
+Keywords: iOS
+Description: 根据自己经验总结的编程规范</p>
+<div class="section" id="iosobjective-c">
+<span id="iosobjective-c"></span><h1>iOS代码Objective-C编程规范<a class="headerlink" href="#iosobjective-c" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="">
+<span id="id1"></span><h2>前言<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+<p>在经过一段时间学习和工作之后，自己写了不少代码，也看了不少代码。深知千人千面，每个人写的代码都有自己的风格。</p>
+<p>而坏的代码各有各的&quot;特色&quot;，好的代码总是清晰明了（当然有一些代码由于高度的抽象，导致不那么&quot;清楚&quot;，需要我们深入去理解它们）。</p>
+<p>在一个团队中，如果没有一个文档规范，特别是当新人进入时，每次都进行口头的说教，将带来不必要的时间成本。</p>
+<p>因此有了这一份iOS代码的Objective-C编程规范。</p>
+</div>
+<div class="section" id="">
+<span id="id2"></span><h2>项目目录结构<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+<p>关于目录结构和架构等组织方式，现在总结出一个道理：</p>
+<blockquote>
+<div>架构是逐渐演进的，适合自己的业务的架构才是最好的架构，没有所谓最好的架构</div></blockquote>
+<p>之前自己忙于工作，没记录下来思考过程有些遗憾，这一篇<a class="reference external" href="http://www.jianshu.com/p/15e5b83ab70e">《iOS移动端架构的那些事》</a>说的非常好。文中最后的middleman以及urlRoute，我已经有一些涉猎和实践，但是在这里不做讨论。</p>
+<p>在一般的开发当中，我们使用按<code class="docutils literal"><span class="pre">模块</span></code>划分的方法，已经足够用了。
+目前使用的目录结构如下：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>
+<span class="o">|---</span><span class="n">AppDelegate</span>
+<span class="o">|---</span><span class="n">AppDelegate</span><span class="o">+</span><span class="n">category1</span>
+<span class="o">|---</span><span class="n">AppDelegate</span><span class="o">+</span><span class="n">category2</span>
+<span class="o">...</span>
+<span class="o">|---</span><span class="n">Classes</span>
+<span class="o">|---</span><span class="n">Module</span>
+<span class="o">|---</span><span class="n">Controller</span>
+<span class="o">|---</span><span class="n">Model</span>
+<span class="o">|---</span><span class="n">View</span>
+<span class="o">...</span>
+<span class="o">|---</span><span class="n">Expand</span>
+<span class="o">|---</span><span class="n">Category</span>
+<span class="o">|---</span><span class="n">UIKit</span>
+<span class="o">|---</span><span class="n">Foundation</span>
+<span class="o">|---</span><span class="n">Const</span>
+<span class="o">|---</span><span class="n">HZConst</span>
+<span class="o">|---</span><span class="n">APIConst</span>
+<span class="o">|---</span><span class="n">Macros</span>
+<span class="o">|---</span><span class="n">NetWork</span>
+<span class="o">|---</span><span class="n">Utility</span>
+<span class="o">...</span>
+<span class="o">|---</span><span class="n">Resource</span>
+<span class="o">|---</span><span class="n">Image</span>
+<span class="o">|---</span><span class="n">Plist</span>
+<span class="o">|---</span><span class="n">File</span>
+<span class="o">|---</span><span class="n">Video</span>
+<span class="o">|---</span><span class="n">Sound</span>
+<span class="o">...</span>
+<span class="o">|---</span><span class="n">Vendor</span>
+</pre></div>
+</div>
+<p>乍一看很多，容我慢慢讲解。</p>
+<div class="section" id="appdelegate">
+<span id="appdelegate"></span><h3>AppDelegate<a class="headerlink" href="#appdelegate" title="Permalink to this headline">¶</a></h3>
+<p>App的Delegate类实现，它必须有。但是有时候会在里面做很多操作，比如：监听前后台切换，或者第三方登录，统计分析，通知注册回调等等的操作。因而将代码进行拆分，对AppDelegate按功能分类。</p>
+</div>
+<div class="section" id="classes">
+<span id="classes"></span><h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h3>
+<p>这里是我们写业务的地方。</p>
+<p>首先横向拆分业务、功能模块。</p>
+<p>然后模块里面纵向拆分，一般采用MVC/MVVM/MVP等方式都可以。</p>
+<blockquote>
+<div>注意，这个地方曾经有同事倾向于按界面去分模块。这样有两个不好的地方:第一，比如电商APP，在首页/收藏/商品买卖等等各个地方，都需要一个商品详情模块，那这个模块界面层级，该怎么放？按业务拆分时，就不应该再用界面去划分模块。第二，代码组织的层级很容易过深，如果界面复和功能复杂起来，那展开一个文件可能需要打开很多层文件夹。</div></blockquote>
+</div>
+<div class="section" id="expand">
+<span id="expand"></span><h3>Expand<a class="headerlink" href="#expand" title="Permalink to this headline">¶</a></h3>
+<p>顾名思义，这里放的都是我们的扩展文件,可以存放Category(分类文件)，Const(常用常量，api常量)，Macros(宏)，Network(网络库的封装扩展)，Utility(工具箱)等等。</p>
+</div>
+<div class="section" id="resource">
+<span id="resource"></span><h3>Resource<a class="headerlink" href="#resource" title="Permalink to this headline">¶</a></h3>
+<p>在Resource里面，存放我们的各种资源文件,plist,image,video等等。</p>
+</div>
+<div class="section" id="vendor">
+<span id="vendor"></span><h3>Vendor<a class="headerlink" href="#vendor" title="Permalink to this headline">¶</a></h3>
+<p>这里面统一存放的是我们引入的第三方库和框架。</p>
+<p>虽然可以用CocoaPods和Carthage很方便地管理第三方库，但偶尔也会需要直接引入第三方的文件。</p>
+</div>
+</div>
+<div class="section" id="">
+<span id="id3"></span><h2>文件内代码组织<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+<p>考虑到知易行难这样亘古不变的道理，我已经整理好代码模板文件到<a class="reference external" href="https://github.com/zzgo/CodeTemplate">我的Github</a>上,直接clone下来后，放在如下路径:</p>
+<blockquote>
+<div>/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/File Templates/Source/</div></blockquote>
+<div class="section" id="">
+<span id="id4"></span><h3>文件头注释<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<p>所有的文件在文件头注释上，应当具有:</p>
+<ul class="simple">
+<li>文件创建的时间</li>
+<li>文件创建者</li>
+<li>文件创建者的联系方式</li>
+</ul>
+<p>如下所示：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>//
+//  Created by zzgo on 16/8/21.
+//  Contact by zzgoCC@gmail.com
+//  Copyright © 2016年 quseit. All rights reserved.
+//
+</pre></div>
+</div>
+<p>意义在于让后来者知道代码创建的时间，以及碰到问题时，可以及时联系上原作者。</p>
+</div>
+<div class="section" id="interface">
+<span id="interface"></span><h3>&#64;interface<a class="headerlink" href="#interface" title="Permalink to this headline">¶</a></h3>
+<p>在接口中，先写属性（delegate在最后），再写方法(类方法在前)。
+如:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nd">@interface</span> <span class="n">Object</span> <span class="p">:</span> <span class="n">NSObject</span>
+<span class="nd">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">name</span><span class="p">;</span>
+<span class="nd">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">weak</span><span class="p">)</span> <span class="nb">id</span><span class="o">&lt;</span><span class="n">ObjectDelegate</span><span class="o">&gt;</span> <span class="n">delegate</span><span class="p">;</span>
+<span class="o">+</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">testLog</span><span class="p">;</span>
+<span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">configure</span><span class="p">;</span>
+<span class="nd">@end</span>
+</pre></div>
+</div>
+<div class="section" id="">
+<span id="id5"></span><h4>接口设计原则<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
+<p>避免 “厨房水槽（kitchen-sink）” 式的 API。如果一个函数压根没必要公开，就不要这么做。提一下接口的设计原则:</p>
+<ul class="simple">
+<li>只暴露外部需要看到的。尽可能少的<code class="docutils literal"><span class="pre">暴露</span></code>类的方法，属性，和成员变量等。</li>
+<li>合理分组</li>
+<li>避免头文件污染</li>
+<li>避免接口过度设计</li>
+<li>隐藏继承关系中的私有接口</li>
+<li>避免单例的滥用</li>
+</ul>
+<p>有兴趣的可以看一看这个文章&lt;<a class="reference external" href="http://blog.sunnyxx.com/2014/04/13/objc_dig_interface/">objc&#64;interface的设计哲学与设计技巧</a>&gt;</p>
+<p>另外，对于一个外部引用对象，且外部不会发生set操作的对象，使用readonly属性:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="o">//.</span><span class="n">h文件中</span>
+<span class="nd">@interface</span> <span class="n">MyClass</span> <span class="p">:</span> <span class="n">NSObject</span>
+<span class="nd">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n">NSObject</span> <span class="o">*</span><span class="nb">object</span><span class="p">;</span>
+<span class="nd">@end</span>
+<span class="o">//.</span><span class="n">m文件中</span>
+<span class="nd">@interface</span> <span class="n">MyClass</span> <span class="p">()</span>
+<span class="nd">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n">NSObject</span> <span class="o">*</span><span class="nb">object</span><span class="p">;</span>
+<span class="nd">@end</span>
+<span class="nd">@implementation</span> <span class="n">MyClass</span>
+<span class="o">//</span><span class="n">Do</span> <span class="n">Something</span> <span class="n">cool</span>
+<span class="nd">@end</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="m">
+<span id="m"></span><h3>.m文件的布局顺序<a class="headerlink" href="#m" title="Permalink to this headline">¶</a></h3>
+<p>布局顺序如下：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>    <span class="o">//</span><span class="n">文件头注释</span>
+<span class="o">//</span><span class="kn">import</span>
+<span class="o">//</span><span class="n">文件内部使用的宏</span>
+<span class="o">//</span><span class="n">常量定义</span>
+<span class="o">//</span><span class="nd">@interface</span><span class="p">()</span>
+<span class="o">//</span><span class="nd">@implementation</span>
+</pre></div>
+</div>
+<div class="section" id="implementation">
+<span id="implementation"></span><h4>&#64;implementation中的组织<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#pragma mark - Intial Methods</span>
+<span class="c1">#pragma mark - Override/Life Cycle</span>
+<span class="c1">#pragma mark - Notification</span>
+<span class="c1">#pragma mark - KVO</span>
+<span class="c1">#pragma mark - target-action/IBActions</span>
+<span class="c1">#pragma mark - delegate dataSource protocol</span>
+<span class="c1">#pragma mark - public</span>
+<span class="c1">#pragma mark - private</span>
+<span class="c1">#pragma mark - getter / setter</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="">
+<span id="id6"></span><h4>控制流语句的括号使用<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
+<p>在使用控制流语句时，必须使用括号.
+推荐:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">someObject</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">[</span><span class="n">someObject</span> <span class="n">doSomething</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>不推荐:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">someObject</span><span class="p">)</span> <span class="p">[</span><span class="n">someObject</span> <span class="n">doSomething</span><span class="p">];</span>
+</pre></div>
+</div>
+<p>括号让我们的控制流语句的执行体看起来更明了。</p>
+</div>
+</div>
+<div class="section" id="">
+<span id="id7"></span><h3>其他具体风格<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<p>关于更细节的代码风格，统一使用Xcode的插件 <a class="reference external" href="https://github.com/travisjeffery/ClangFormat-Xcode">clang-format</a> ，来格式化代码风格。</p>
+<blockquote>
+<div>clang-format是基于clang的一个命令行工具。这个工具能够自动化格式C/C++/Obj-C代码，支持多种代码风格：Google, Chromium, LLVM, Mozilla, WebKit，也支持自定义风格（通过编写.clang-format文件）。</div></blockquote>
+<p>在工程目录或者workspace目录下创建一个&quot;.clang-format&quot;文件，就可以使用自定义的格式。</p>
+<p>在这里我们采用统一的<code class="docutils literal"><span class="pre">.clang-format</span></code>文件.同样可以前往<a class="reference external" href="https://github.com/zzgo/CodeTemplate">我的Github</a>上下载。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="articleComments">
+</div>
+</div>
+<footer>
+<hr/>
+<script>
+</script>
+<hr/><div role="contentinfo">
+<p>
+&copy; Copyright 2017, River.
+</p>
+</div>
+Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script type="text/javascript">
+var DOCUMENTATION_OPTIONS = {
+URL_ROOT:'../',
+VERSION:'0.9',
+COLLAPSE_INDEX:false,
+FILE_SUFFIX:'.html',
+HAS_SOURCE:  true,
+SOURCELINK_SUFFIX: '.txt'
+};
+</script>
+<script type="text/javascript" src="../static/jquery.js"></script>
+<script type="text/javascript" src="../static/underscore.js"></script>
+<script type="text/javascript" src="../static/doctools.js"></script>
+<script type="text/javascript" src="../static/js/theme.js"></script>
+<script type="text/javascript">
+jQuery(function () {
+SphinxRtdTheme.StickyNav.enable();
+});
+</script>
+</body>
+</html>

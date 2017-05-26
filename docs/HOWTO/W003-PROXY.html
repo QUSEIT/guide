@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>工作室使用 Shadowsocks 进行翻墙，各系统的客户端可以到此下载安装客户端 &mdash; Quseit Guide 0.9 documentation</title>
+<link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
+<link rel="index" title="Index"
+href="../genindex.html"/>
+<link rel="search" title="Search" href="../search.html"/>
+<link rel="top" title="Quseit Guide 0.9 documentation" href="../index.html"/>
+<script src="../static/js/modernizr.min.js"></script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav data-toggle="wy-nav-shift" class="wy-nav-side">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a href="../index.html" class="icon icon-home"> Quseit Guide
+</a>
+<div class="version">
+0.9
+</div>
+<div role="search">
+<form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+<input type="text" name="q" placeholder="Search docs" />
+<input type="hidden" name="check_keywords" value="yes" />
+<input type="hidden" name="area" value="default" />
+</form>
+</div>
+</div>
+<div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide.html">APP小组</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide.html#id1">200小组</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide.html#id2">技术支持</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+<nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+<i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+<a href="../index.html">Quseit Guide</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div role="navigation" aria-label="breadcrumbs navigation">
+<ul class="wy-breadcrumbs">
+<li><a href="../index.html">Docs</a> &raquo;</li>
+<li>工作室使用 Shadowsocks 进行翻墙，各系统的客户端可以到此下载安装客户端</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+<div itemprop="articleBody">
+<p>Title: 工作室代理配置教程
+Date: 2016-07-09 14:50
+Category: HOWTO</p>
+<div class="section" id="shadowsocks">
+<span id="shadowsocks"></span><h1>工作室使用 Shadowsocks 进行翻墙，各系统的客户端可以<a class="reference external" href="https://github.com/shadowsocks/shadowsocks/wiki/Shadowsocks-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E">到此</a>下载安装客户端<a class="headerlink" href="#shadowsocks" title="Permalink to this headline">¶</a></h1>
+<p>Mac:</p>
+<blockquote>
+<div><ul class="simple">
+<li>下载后 Mac 双击安装</li>
+<li>Mac: 启动后如果弹出服务器配置直接关闭，将服务器二维码显示在屏幕上，右键右上方托盘区小飞机图标 -&gt; 从屏幕上扫描二维码 -&gt; 弹出服务器配置确认即可。</li>
+<li>右键小飞机确认 Shadowsocks 处于打开状态 -&gt; 选择全局模式 -&gt; 点击从 GFWlist 更新 PAC。</li>
+<li>切换回自动模式，打开<a class="reference external" href="www.google.com">谷歌</a> 确认是否已经成功</li>
+</ul>
+</div></blockquote>
+<p>Windows:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Windows 放到合适的目录解压即安装（第一期运行后同目录下会生成几个配置文件）</li>
+<li>方式基本同 Mac 其中扫描二维码在服务器的二级菜单，自动模式在 Windows 叫 PAC 模式</li>
+</ul>
+</div></blockquote>
+<p>Linux:</p>
+<blockquote>
+<div><ul class="simple">
+<li>打开系统设置 -&gt; 网络 -&gt; 网络代理</li>
+<li>选择自动模式</li>
+<li>地址填 http://quseitlab/static/img/proxy.pac</li>
+<li>确认，可能需要输入管理员密码</li>
+</ul>
+</div></blockquote>
+<p>IOS:</p>
+<blockquote>
+<div><ul class="simple">
+<li>如果没有打算购买收费应用只能使用 PAC 模式（每个 WIFI 都需要单独配置）</li>
+<li>打开设置 -&gt; 无线局域网 -&gt; 当前已连接 WIFI 最右侧的 i 形蓝色图标</li>
+<li>最下方 HTTP 代理选择自动模式</li>
+<li>地址填 http://quseitlab/static/img/proxy.pac</li>
+<li>回车确认，点击最左上角的返回按钮返回</li>
+<li>打开<a class="reference external" href="www.google.com">谷歌</a> 确认是否已经成功</li>
+</ul>
+</div></blockquote>
+<p>Android:</p>
+<blockquote>
+<div><ul class="simple">
+<li>可以使用 PAC 模式，方法同 IOS</li>
+<li>下载 Android 客户端后安装即可，添加服务器需手动配置</li>
+<li>地址: quseitlab</li>
+<li>端口: 8388</li>
+<li>加密: aes-256-cfb</li>
+<li>密码: 问胡国涛要</li>
+</ul>
+</div></blockquote>
+<p>Mac 或 Windows 可以通过编辑本地 PAC 文件使用我们的国内跳板进一步提高联网速度:</p>
+<blockquote>
+<div><ul class="simple">
+<li>打开 gfwlist.js 编辑 var proxy = xxxxx 这行</li>
+<li>将两个 127.0.0.1:1080 都改为 xx.xx.xx.xx:1080 即可</li>
+</ul>
+</div></blockquote>
+<p>如果有任何问题可以直接找胡国涛，使用在线 PAC 模式的同学遇到某些无法访问的网址可以把地址提交给胡国涛添加进自动翻墙列表</p>
+<p>SS 服务器二维码（请找HGT索取）</p>
+</div>
+</div>
+<div class="articleComments">
+</div>
+</div>
+<footer>
+<hr/>
+<script>
+</script>
+<hr/><div role="contentinfo">
+<p>
+&copy; Copyright 2017, River.
+</p>
+</div>
+Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script type="text/javascript">
+var DOCUMENTATION_OPTIONS = {
+URL_ROOT:'../',
+VERSION:'0.9',
+COLLAPSE_INDEX:false,
+FILE_SUFFIX:'.html',
+HAS_SOURCE:  true,
+SOURCELINK_SUFFIX: '.txt'
+};
+</script>
+<script type="text/javascript" src="../static/jquery.js"></script>
+<script type="text/javascript" src="../static/underscore.js"></script>
+<script type="text/javascript" src="../static/doctools.js"></script>
+<script type="text/javascript" src="../static/js/theme.js"></script>
+<script type="text/javascript">
+jQuery(function () {
+SphinxRtdTheme.StickyNav.enable();
+});
+</script>
+</body>
+</html>

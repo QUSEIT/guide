@@ -19,6 +19,11 @@
 import os
 import sys
 sys.path.insert(0, os.path.abspath('.'))
+from recommonmark.parser import CommonMarkParser
+
+
+
+source_suffix = ['.rst', '.md']
 try:
     import sphinx_rtd_theme
 except:
@@ -44,7 +49,11 @@ templates_path = ['_templates']
 # You can specify multiple suffix as a list of string:
 #
 # source_suffix = ['.rst', '.md']
-source_suffix = '.rst'
+source_parsers = {
+    '.md': CommonMarkParser,
+}
+source_suffix = ['.rst', '.md']
+#source_suffix = '.rst'
 
 # The encoding of source files.
 #
@@ -201,7 +210,7 @@ html_static_path = ['_static']
 
 # If true, links to the reST sources are added to the pages.
 #
-# html_show_sourcelink = True
+html_show_sourcelink = False
 
 # If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
 #
