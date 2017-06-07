@@ -17,8 +17,8 @@ APP小组
    U200/P001-Product
    U200/P002-Quseit-Django-Authentication-Python
    U200/P004-django-uwsgi-nginx
-   U200/P001-Quseit-Alipay-Python
    U200/P003-Django-Model-Aes
+   U200/P001-Quseit-Alipay-Python
 
 
 技术支持
