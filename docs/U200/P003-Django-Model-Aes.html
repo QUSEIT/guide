@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Django models AES 加密、解密 &mdash; Quseit Guide 0.9 documentation</title>
+<link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
+<link rel="index" title="Index"
+href="../genindex.html"/>
+<link rel="search" title="Search" href="../search.html"/>
+<link rel="top" title="Quseit Guide 0.9 documentation" href="../index.html"/>
+<link rel="up" title="APP小组" href="../guide.html"/>
+<link rel="prev" title="支付宝Python 接入使用说明" href="P001-Quseit-Alipay-Python.html"/>
+<script src="../static/js/modernizr.min.js"></script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav data-toggle="wy-nav-shift" class="wy-nav-side">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a href="../index.html" class="icon icon-home"> Quseit Guide
+</a>
+<div class="version">
+0.9
+</div>
+<div role="search">
+<form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+<input type="text" name="q" placeholder="Search docs" />
+<input type="hidden" name="check_keywords" value="yes" />
+<input type="hidden" name="area" value="default" />
+</form>
+</div>
+</div>
+<div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../guide.html">APP小组</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../guide.html#id1">200小组</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="W002-What-should-pyer-know.html">初级Python开发工程师需要掌握</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A001-Javascript-Style.html">JavaScript 编码规范指南</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P001-Product.html">优趣产品过程介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P002-Quseit-Django-Authentication-Python.html">Django用户验证系统</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P004-django-uwsgi-nginx.html">django + uwsgi + nginx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P004-django-uwsgi-nginx.html#data-www-vhosts-pro">注意： /data/www/vhosts/pro/  目录为你的项目路径</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P001-Quseit-Alipay-Python.html">支付宝Python 接入使用说明</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Django models AES 加密、解密</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#">思路</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#">安装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-demo">Example Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#models">定义models</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guide.html#id2">技术支持</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+<nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+<i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+<a href="../index.html">Quseit Guide</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div role="navigation" aria-label="breadcrumbs navigation">
+<ul class="wy-breadcrumbs">
+<li><a href="../index.html">Docs</a> &raquo;</li>
+<li><a href="../guide.html">APP小组</a> &raquo;</li>
+<li>Django models AES 加密、解密</li>
+<li class="wy-breadcrumbs-aside">
+<a href="../_sources/U200/P003-Django-Model-Aes.md.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+<div itemprop="articleBody">
+<div class="section" id="django-models-aes">
+<span id="django-models-aes"></span><h1>Django models AES 加密、解密<a class="headerlink" href="#django-models-aes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="">
+<span id="id1"></span><h2>思路<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+<p>django Field 在存入 Mysql 时会调用 get_prep_value 方法，从 Mysql 中取数据时会调用 to_python 方法，根据这个逻辑，我们就有方案啦。</p>
+<ol class="simple">
+<li>存数据时加密（重写 get_prep_value方法）;</li>
+<li>取数据时解密（重写 to_python 方法）。</li>
+</ol>
+</div>
+<div class="section" id="">
+<span id="id2"></span><h2>安装<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+<p>AES 包安装</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pycrypto</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-demo">
+<span id="example-demo"></span><h2>Example Demo<a class="headerlink" href="#example-demo" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
+<span class="c1"># name: aes_field.py</span>
+<span class="c1"># date: &#39;2016-12-16&#39;</span>
+<span class="kn">from</span> <span class="nn">Crypto.Cipher</span> <span class="k">import</span> <span class="n">AES</span>
+<span class="kn">import</span> <span class="nn">base64</span>
+<span class="kn">from</span> <span class="nn">django.db</span> <span class="k">import</span> <span class="n">models</span>
+<span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Anlim&#39;</span>
+<span class="k">class</span> <span class="nc">AesField</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">        model Fields for aes</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<span class="n">PADDING</span> <span class="o">=</span> <span class="s1">&#39;{&#39;</span>
+<span class="n">block_size</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">secret</span> <span class="o">=</span> <span class="s1">&#39;this_is_secret&#39;</span>
+<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">coder</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;coder&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">secret</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">secret</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">cipher</span> <span class="o">=</span> <span class="n">AES</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">secret</span><span class="p">)</span>
+<span class="nb">super</span><span class="p">(</span><span class="n">AesField</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">from_db_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">expression</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_python</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">to_python</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="c1">#print &quot;to python&quot;</span>
+<span class="c1"># django  get db data</span>
+<span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">        if not value:</span>
+<span class="sd">            return value</span>
+<span class="sd">        return self.coder.decode(value)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+<span class="c1">#try:</span>
+<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="c1">#except Exception:</span>
+<span class="c1">#    return value</span>
+<span class="k">def</span> <span class="nf">get_prep_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="c1"># django 保存数据时会调用</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">value</span><span class="p">:</span>
+<span class="k">return</span> <span class="n">value</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+<span class="n">value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">pad</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+<span class="k">return</span> <span class="n">s</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">block_size</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">block_size</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">PADDING</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="models">
+<span id="models"></span><h2>定义models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="k">import</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">aes_field.py</span> <span class="k">import</span> <span class="n">AesField</span>
+<span class="k">class</span> <span class="nc">UserInfo</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">AesField</span><span class="p">(</span><span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;姓名&#39;</span><span class="p">)</span>
+<span class="n">id_card</span> <span class="o">=</span> <span class="n">AesField</span><span class="p">(</span><span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;身份证号&#39;</span><span class="p">)</span>
+<span class="n">address</span> <span class="o">=</span> <span class="n">AesField</span><span class="p">(</span><span class="n">verbose_name</span><span class="o">=</span><span class="s1">&#39;家庭住址&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="articleComments">
+</div>
+</div>
+<footer>
+<div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+<a href="P001-Quseit-Alipay-Python.html" class="btn btn-neutral" title="支付宝Python 接入使用说明" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+</div>
+<hr/>
+<script>
+</script>
+<hr/><div role="contentinfo">
+<p>
+&copy; Copyright 2017, River.
+Last updated on True.
+</p>
+</div>
+Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script type="text/javascript">
+var DOCUMENTATION_OPTIONS = {
+URL_ROOT:'../',
+VERSION:'0.9',
+COLLAPSE_INDEX:false,
+FILE_SUFFIX:'.html',
+HAS_SOURCE:  true,
+SOURCELINK_SUFFIX: '.txt'
+};
+</script>
+<script type="text/javascript" src="../static/jquery.js"></script>
+<script type="text/javascript" src="../static/underscore.js"></script>
+<script type="text/javascript" src="../static/doctools.js"></script>
+<script type="text/javascript" src="../static/js/theme.js"></script>
+<script type="text/javascript">
+jQuery(function () {
+SphinxRtdTheme.StickyNav.enable();
+});
+</script>
+</body>
+</html>

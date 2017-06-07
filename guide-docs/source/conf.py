@@ -210,7 +210,7 @@ html_static_path = ['_static']
 
 # If true, links to the reST sources are added to the pages.
 #
-html_show_sourcelink = False
+html_show_sourcelink = True
 
 # If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
 #
@@ -330,6 +330,11 @@ texinfo_documents = [
      'Miscellaneous'),
 ]
 
+html_context = {
+    "display_github": False, # Add 'Edit on Github' link instead of 'View page source'
+    "last_updated": True,
+    "commit": False,
+}
 # Documents to append as an appendix to all manuals.
 #
 # texinfo_appendices = []

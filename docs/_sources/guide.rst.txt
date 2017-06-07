@@ -14,9 +14,11 @@ APP小组
 
    U200/W002-What-should-pyer-know
    U200/A001-Javascript-Style
-   U200/P002-Quseit-Django-Authentication-Python
-   U200/P001-Quseit-Alipay-Python
    U200/P001-Product
+   U200/P002-Quseit-Django-Authentication-Python
+   U200/P004-django-uwsgi-nginx
+   U200/P001-Quseit-Alipay-Python
+   U200/P003-Django-Model-Aes
 
 
 技术支持
