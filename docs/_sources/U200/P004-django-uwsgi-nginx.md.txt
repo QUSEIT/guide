@@ -5,11 +5,7 @@
 pip install uwsgi
 ```
 
-#### 安装nginx
-```
-apt-get install nginx
-```
-
+##### UWSGI 配置
 ###### 在项目目录下创建 app_uwsgi.ini
 ```
 [uwsgi]
@@ -61,7 +57,13 @@ uwsgi_param SERVER_PORT         $server_port;
 uwsgi_param SERVER_NAME         $server_name;
 ```
 
-#### nginx 配置
+#### 安装nginx
+
+```
+apt-get install nginx
+```
+
+##### nginx 配置
 
 ```
 upstream django {
@@ -101,7 +103,7 @@ server {
 
 }
 ```
-### 注意： /data/www/vhosts/pro/  目录为你的项目路径
+注意： /data/www/vhosts/pro/  目录为你的项目路径
 
 #### 启动命令
 

@@ -42,16 +42,14 @@ href="../genindex.html"/>
 <li class="toctree-l2"><a class="reference internal" href="P001-Product.html">优趣产品过程介绍</a></li>
 <li class="toctree-l2"><a class="reference internal" href="P002-Quseit-Django-Authentication-Python.html">Django用户验证系统</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">django + uwsgi + nginx</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#uwsgi">安装uwsgi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uwsgi">安装uwsgi</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#uwsgi">UWSGI 配置</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#nginx">安装nginx</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#app-uwsgi-ini">在项目目录下创建 app_uwsgi.ini</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#uwsgi-params">创建 uwsgi_params 文件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nginx">nginx 配置</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#nginx">nginx 配置</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#data-www-vhosts-pro">注意： /data/www/vhosts/pro/  目录为你的项目路径</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#">启动命令</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#">重启服务</a></li>
 </ul>
@@ -92,14 +90,10 @@ href="../genindex.html"/>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">uwsgi</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="nginx">
-<span id="nginx"></span><h2>安装nginx<a class="headerlink" href="#nginx" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">nginx</span>
-</pre></div>
-</div>
+<div class="section" id="uwsgi">
+<span id="id1"></span><h3>UWSGI 配置<a class="headerlink" href="#uwsgi" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="app-uwsgi-ini">
-<span id="app-uwsgi-ini"></span><h3>在项目目录下创建 app_uwsgi.ini<a class="headerlink" href="#app-uwsgi-ini" title="Permalink to this headline">¶</a></h3>
+<span id="app-uwsgi-ini"></span><h4>在项目目录下创建 app_uwsgi.ini<a class="headerlink" href="#app-uwsgi-ini" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">uwsgi</span><span class="p">]</span>
 <span class="c1"># Django-related settings</span>
 <span class="c1"># the base directory (full path)</span>
@@ -126,7 +120,7 @@ href="../genindex.html"/>
 </div>
 </div>
 <div class="section" id="uwsgi-params">
-<span id="uwsgi-params"></span><h3>创建 uwsgi_params 文件<a class="headerlink" href="#uwsgi-params" title="Permalink to this headline">¶</a></h3>
+<span id="uwsgi-params"></span><h4>创建 uwsgi_params 文件<a class="headerlink" href="#uwsgi-params" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span>uwsgi_param QUERY_STRING        $query_string;
 uwsgi_param REQUEST_METHOD      $request_method;
 uwsgi_param CONTENT_TYPE        $content_type;
@@ -144,8 +138,14 @@ uwsgi_param SERVER_NAME         $server_name;
 </div>
 </div>
 </div>
+</div>
 <div class="section" id="nginx">
-<span id="id1"></span><h2>nginx 配置<a class="headerlink" href="#nginx" title="Permalink to this headline">¶</a></h2>
+<span id="nginx"></span><h2>安装nginx<a class="headerlink" href="#nginx" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">nginx</span>
+</pre></div>
+</div>
+<div class="section" id="nginx">
+<span id="id2"></span><h3>nginx 配置<a class="headerlink" href="#nginx" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">upstream</span> <span class="n">django</span> <span class="p">{</span>
 <span class="n">server</span> <span class="n">unix</span><span class="p">:</span><span class="o">///</span><span class="n">data</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">vhosts</span><span class="o">/</span><span class="n">pro</span><span class="o">/</span><span class="n">uwsgi</span><span class="o">.</span><span class="n">sock</span><span class="p">;</span>
 <span class="p">}</span>
@@ -176,18 +176,17 @@ uwsgi_param SERVER_NAME         $server_name;
 <span class="p">}</span>
 </pre></div>
 </div>
+<p>注意： /data/www/vhosts/pro/  目录为你的项目路径</p>
 </div>
 </div>
-<div class="section" id="data-www-vhosts-pro">
-<span id="data-www-vhosts-pro"></span><h1>注意： /data/www/vhosts/pro/  目录为你的项目路径<a class="headerlink" href="#data-www-vhosts-pro" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="">
-<span id="id2"></span><h2>启动命令<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+<span id="id3"></span><h2>启动命令<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">uwsgi</span> <span class="o">--</span><span class="n">ini</span> <span class="n">apps_uwsgi</span><span class="o">.</span><span class="n">ini</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="">
-<span id="id3"></span><h2>重启服务<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+<span id="id4"></span><h2>重启服务<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">uwsgi</span> <span class="o">--</span><span class="n">reload</span> <span class="n">uwsgi</span><span class="o">.</span><span class="n">pid</span>
 </pre></div>
 </div>
