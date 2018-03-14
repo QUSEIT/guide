@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>优趣 Python 编码规范整理 &mdash; Quseit Guide 0.9 documentation</title>
+<link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
+<link rel="index" title="Index"
+href="../genindex.html"/>
+<link rel="search" title="Search" href="../search.html"/>
+<link rel="top" title="Quseit Guide 0.9 documentation" href="../index.html"/>
+<link rel="up" title="APP小组" href="../guide.html"/>
+<link rel="next" title="JavaScript 编码规范指南" href="A001-Javascript-Style.html"/>
+<link rel="prev" title="初级Python开发工程师需要掌握" href="W002-What-should-pyer-know.html"/>
+<script src="../static/js/modernizr.min.js"></script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav data-toggle="wy-nav-shift" class="wy-nav-side">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a href="../index.html" class="icon icon-home"> Quseit Guide
+</a>
+<div class="version">
+0.9
+</div>
+<div role="search">
+<form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+<input type="text" name="q" placeholder="Search docs" />
+<input type="hidden" name="check_keywords" value="yes" />
+<input type="hidden" name="area" value="default" />
+</form>
+</div>
+</div>
+<div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../guide.html">APP小组</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../guide.html#id1">200小组</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="W002-What-should-pyer-know.html">初级Python开发工程师需要掌握</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">优趣 Python 编码规范整理</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pep8-python">PEP8 Python 编码规范摘要</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#">一 代码编排</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#">二 文档编排</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#">三 空格的使用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#">四 注释</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#">五 文档描述</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#">六 命名规范</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#">七 编码建议</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="A001-Javascript-Style.html">JavaScript 编码规范指南</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P001-Product.html">优趣产品过程介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P002-Quseit-Django-Authentication-Python.html">Django用户验证系统</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P004-django-uwsgi-nginx.html">django + uwsgi + nginx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P003-Django-Model-Aes.html">Django models AES 加密、解密</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P001-Quseit-Alipay-Python.html">支付宝Python 接入使用说明</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guide.html#id2">技术支持</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+<nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+<i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+<a href="../index.html">Quseit Guide</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div role="navigation" aria-label="breadcrumbs navigation">
+<ul class="wy-breadcrumbs">
+<li><a href="../index.html">Docs</a> &raquo;</li>
+<li><a href="../guide.html">APP小组</a> &raquo;</li>
+<li>优趣 Python 编码规范整理</li>
+<li class="wy-breadcrumbs-aside">
+<a href="../_sources/U200/W003-PEP8.md.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+<div itemprop="articleBody">
+<div class="section" id="python">
+<span id="python"></span><h1>优趣 Python 编码规范整理<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h1>
+<p>做<em>Python</em>开发时，务必需要遵循良好的规范。参与到现代软件的协作开发过程中，不遵守规范的代码就是一个孤岛，除了自己能容易理解外，阻塞了其他人接受认可，无法发挥其应有的价值；只有规范良好的软件开发过程才可能让团队成员能方便地理解你的思路，或者更轻松与你对接接口，或者更方便地帮助你修复BUG，这样你实现的代码才能持续放大价值。</p>
+<p>这篇文档是基于Python官方推荐的PEP8的编码规范摘要总结，优趣所有Python开发工程师都应该遵守，并不断完善的开发规范。大家在阅读的同时也欢迎不断改进规范。</p>
+<div class="section" id="pep8-python">
+<span id="pep8-python"></span><h2>PEP8 Python 编码规范摘要<a class="headerlink" href="#pep8-python" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="">
+<span id="id1"></span><h2>一 代码编排<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>1 缩进。4个空格的缩进（编辑器都可以完成此功能），不使用Tap，更不能混合使用Tap和空格。</li>
+<li>2 每行最大长度79，换行可以使用反斜杠，最好使用圆括号。换行点要在操作符的后边敲回车。</li>
+<li>3 类和top-level函数定义之间空两行；类中的方法定义之间空一行；函数内逻辑无关段落之间空一行；其他地方尽量不要再空行。</li>
+</ul>
+</div>
+<div class="section" id="">
+<span id="id2"></span><h2>二 文档编排<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>1 模块内容的顺序：模块说明和docstring—import—globals&amp;constants—其他定义。其中import部分，又按标准、三方和自己编写顺序依次排放，之间空一行。</li>
+<li>2 不要在一句import中多个库，比如import os, sys不推荐。</li>
+<li>3 如果采用from XX import XX引用库，可以省略‘module.’，都是可能出现命名冲突，这时就要采用import XX。</li>
+</ul>
+</div>
+<div class="section" id="">
+<span id="id3"></span><h2>三 空格的使用<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+<p>总体原则，避免不必要的空格。</p>
+<ul class="simple">
+<li>1 各种右括号前不要加空格。</li>
+<li>2 逗号、冒号、分号前不要加空格。</li>
+<li>3 函数的左括号前不要加空格。如Func(1)。</li>
+<li>4 序列的左括号前不要加空格。如list[2]。</li>
+<li>5 操作符左右各加一个空格，不要为了对齐增加空格。</li>
+<li>6 函数默认参数使用的赋值符左右省略空格。</li>
+<li>7 不要将多句语句写在同一行，尽管使用‘；’允许。</li>
+<li>8 if/for/while语句中，即使执行语句只有一句，也必须另起一行。</li>
+</ul>
+</div>
+<div class="section" id="">
+<span id="id4"></span><h2>四 注释<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+<p>总体原则，错误的注释不如没有注释。所以当一段代码发生变化时，第一件事就是要修改注释！
+注释必须使用英文，最好是完整的句子，首字母大写，句后要有结束符，结束符后跟两个空格，开始下一句。如果是短语，可以省略结束符。</p>
+<ul class="simple">
+<li>1 块注释，在一段代码前增加的注释。在‘#’后加一空格。段落之间以只有‘#’的行间隔。比如：</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Description : Module config.</span>
+<span class="c1">#</span>
+<span class="c1"># Input : None</span>
+<span class="c1">#</span>
+<span class="c1"># Output : None</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>2 行注释，在一句代码后加注释。</li>
+</ul>
+<p>比如：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>           <span class="c1"># Increment x</span>
+</pre></div>
+</div>
+<p>但是这种方式尽量少使用。</p>
+<ul class="simple">
+<li>3 避免无谓的注释。</li>
+</ul>
+</div>
+<div class="section" id="">
+<span id="id5"></span><h2>五 文档描述<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>1 为所有的共有模块、函数、类、方法写docstrings；非共有的没有必要，但是可以写注释（在def的下一行）。</li>
+<li>2 如果docstring要换行，参考如下例子,详见PEP 257</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Return a foobang</span>
+<span class="sd">Optional plotz says to frobnicate the bizbaz first.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="">
+<span id="id6"></span><h2>六 命名规范<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+<p>总体原则，新编代码必须按下面命名风格进行，现有库的编码尽量保持风格。</p>
+<ul class="simple">
+<li>1 尽量单独使用小写字母‘l’，大写字母‘O’等容易混淆的字母。</li>
+<li>2 模块命名尽量短小，使用全部小写的方式，可以使用下划线。</li>
+<li>3 包命名尽量短小，使用全部小写的方式，不可以使用下划线。</li>
+<li>4 类的命名使用CapWords的方式，模块内部使用的类采用_CapWords的方式。</li>
+<li>5 异常命名使用CapWords+Error后缀的方式。</li>
+<li>6 全局变量尽量只在模块内有效，类似C语言中的static。实现方法有两种，一是<strong>all</strong>机制;二是前缀一个下划线。</li>
+<li>7 函数命名使用全部小写的方式，可以使用下划线。</li>
+<li>8 常量命名使用全部大写的方式，可以使用下划线。</li>
+<li>9 类的属性（方法和变量）命名使用全部小写的方式，可以使用下划线。</li>
+<li>10 类的属性有3种作用域public、non-public和subclass API，可以理解成C++中的public、private、protected，non-public属性前，前缀一条下划线。</li>
+<li>11 类的属性若与关键字名字冲突，后缀一下划线，尽量不要使用缩略等其他方式。</li>
+<li>12 为避免与子类属性命名冲突，在类的一些属性前，前缀两条下划线。比如：类Foo中声明__a,访问时，只能通过Foo._Foo__a，避免歧义。如果子类也叫Foo，那就无能为力了。</li>
+<li>13 类的方法第一个参数必须是self，而静态方法第一个参数必须是cls。</li>
+</ul>
+</div>
+<div class="section" id="">
+<span id="id7"></span><h2>七 编码建议<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>1 编码中考虑到其他python实现的效率等问题，比如运算符‘+’在CPython（Python）中效率很高，都是Jython中却非常低，所以应该采用.join()的方式。</li>
+<li>2 尽可能使用‘is’‘is not’取代‘==’，比如if x is not None 要优于if x。</li>
+<li>3 使用基于类的异常，每个模块或包都有自己的异常类，此异常类继承自Exception。</li>
+<li>4 异常中不要使用裸露的except，except后跟具体的exceptions。</li>
+<li>5 异常中try的代码尽可能少。比如：</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">collection</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+<span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+<span class="k">return</span> <span class="n">key_not_found</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+<span class="k">return</span> <span class="n">handle_value</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>要优于</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>try:
+Too broad!
+return handle_value(collection[key])
+except KeyError:
+Will also catch KeyError raised by handle_value()
+return key_not_found(key)
+</pre></div>
+</div>
+<ul>
+<li><p class="first">6 使用startswith() and endswith()代替切片进行序列前缀或后缀的检查。比如：</p>
+<p>Yes:  if foo.startswith('bar'):</p>
+</li>
+</ul>
+<p>优于</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">No</span><span class="p">:</span>  <span class="k">if</span> <span class="n">foo</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;bar&#39;</span><span class="p">:</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>7 使用isinstance()比较对象的类型。比如</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Yes</span><span class="p">:</span>  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+</pre></div>
+</div>
+<p>优于</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">No</span><span class="p">:</span>  <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">type</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+</pre></div>
+</div>
+<ul>
+<li><p class="first">8 判断序列空或不空，有如下规则</p>
+<p>Yes:  if not seq:</p>
+<p>if seq:</p>
+</li>
+</ul>
+<p>优于</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">No</span><span class="p">:</span>  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>9 字符串不要以空格收尾。</li>
+<li>10 二进制数据判断使用 if boolvalue的方式。</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="articleComments">
+</div>
+</div>
+<footer>
+<div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+<a href="A001-Javascript-Style.html" class="btn btn-neutral float-right" title="JavaScript 编码规范指南" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+<a href="W002-What-should-pyer-know.html" class="btn btn-neutral" title="初级Python开发工程师需要掌握" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+</div>
+<hr/>
+<script>
+</script>
+<hr/><div role="contentinfo">
+<p>
+&copy; Copyright 2017, River.
+Last updated on True.
+</p>
+</div>
+Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script type="text/javascript">
+var DOCUMENTATION_OPTIONS = {
+URL_ROOT:'../',
+VERSION:'0.9',
+COLLAPSE_INDEX:false,
+FILE_SUFFIX:'.html',
+HAS_SOURCE:  true,
+SOURCELINK_SUFFIX: '.txt'
+};
+</script>
+<script type="text/javascript" src="../static/jquery.js"></script>
+<script type="text/javascript" src="../static/underscore.js"></script>
+<script type="text/javascript" src="../static/doctools.js"></script>
+<script type="text/javascript" src="../static/js/theme.js"></script>
+<script type="text/javascript">
+jQuery(function () {
+SphinxRtdTheme.StickyNav.enable();
+});
+</script>
+</body>
+</html>

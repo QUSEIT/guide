@@ -12,7 +12,7 @@ href="../genindex.html"/>
 <link rel="top" title="Quseit Guide 0.9 documentation" href="../index.html"/>
 <link rel="up" title="APP小组" href="../guide.html"/>
 <link rel="next" title="优趣产品过程介绍" href="P001-Product.html"/>
-<link rel="prev" title="初级Python开发工程师需要掌握" href="W002-What-should-pyer-know.html"/>
+<link rel="prev" title="优趣 Python 编码规范整理" href="W003-PEP8.html"/>
 <script src="../static/js/modernizr.min.js"></script>
 </head>
 <body class="wy-body-for-nav" role="document">
@@ -38,6 +38,7 @@ href="../genindex.html"/>
 <li class="toctree-l1"><a class="reference internal" href="../guide.html">APP小组</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../guide.html#id1">200小组</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="W002-What-should-pyer-know.html">初级Python开发工程师需要掌握</a></li>
+<li class="toctree-l2"><a class="reference internal" href="W003-PEP8.html">优趣 Python 编码规范整理</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">JavaScript 编码规范指南</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">参考规范</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">基本原则</a></li>
@@ -656,14 +657,14 @@ var names = items.map(function(item) {</p>
 <p>###### 更多的缩进</p>
 <p>事实上, 除了 初始化数组和对象 , 和传递匿名函数外, 所有被拆开的多行文本要么选择与之前的表达式左对齐, 要么以4个(而不是2个)空格作为一缩进层次.</p>
 <p><a href="#id91"><span class="problematic" id="id92">``</span></a><a href="#id93"><span class="problematic" id="id94">`</span></a>javascript
-someWonderfulHtml = ” +</p>
+someWonderfulHtml = ‘’ +</p>
 <blockquote>
 <div><dl class="docutils">
 <dt>getEvenMoreHtml(someReallyInterestingValues, moreValues,</dt>
 <dd>evenMoreParams, ‘a duck’, true, 72,
 slightlyMoreMonkeys(0xfff)) +</dd>
 </dl>
-<p>”;</p>
+<p>‘’;</p>
 </div></blockquote>
 <dl class="docutils">
 <dt>thisIsAVeryLongVariableName =</dt>
@@ -1160,7 +1161,7 @@ email: <a class="reference external" href="mailto:'b4d455h4x0r&#37;&#52;&#48;goo
 var user = ‘nusrat’;
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.open(‘GET’, ‘<a class="reference external" href="http://chat.google.com/isUserOnline?user=">http://chat.google.com/isUserOnline?user=</a>’ + user, false);
-xmlhttp.send(”);
+xmlhttp.send(‘’);
 // Server returns:
 // userOnline = true;
 if (xmlhttp.status == 200) {</p>
@@ -1375,8 +1376,8 @@ Boolean({}) == true
 <dt><a href="#id350"><span class="problematic" id="id351">``</span></a><a href="#id352"><span class="problematic" id="id353">`</span></a>javascript</dt>
 <dd><dl class="first last docutils">
 <dt>var html = ‘&lt;input type=”checkbox”’ +</dt>
-<dd>(isChecked ? ‘ checked’ : ”) +
-(isEnabled ? ” : ‘ disabled’) +
+<dd>(isChecked ? ‘ checked’ : ‘’) +
+(isEnabled ? ‘’ : ‘ disabled’) +
 ‘ name=”foo”&gt;’;</dd>
 </dl>
 </dd>
@@ -1507,7 +1508,7 @@ return ‘&lt;div class=”foo”&gt;’ + html.join(‘, ‘) + ‘&lt;/div&gt;
 </dd>
 </dl>
 <p><a href="#id420"><span class="problematic" id="id421">``</span></a>`
-你也可以是用数组作为字符串构造器, 然后通过 myArray.join(”) 转换成字符串. 不过由于赋值操作快于数组的 push(), 所以尽量使用赋值操作.</p>
+你也可以是用数组作为字符串构造器, 然后通过 myArray.join(‘’) 转换成字符串. 不过由于赋值操作快于数组的 push(), 所以尽量使用赋值操作.</p>
 <p>##### 类型检测 (来源于 jQuery Core Style Guidelines)</p>
 <ul>
 <li><p class="first">直接类型（实际类型，Actual Types）</p>
@@ -1820,7 +1821,7 @@ for(var i = 0; i &lt; arr.length; i++){</p>
 <footer>
 <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
 <a href="P001-Product.html" class="btn btn-neutral float-right" title="优趣产品过程介绍" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-<a href="W002-What-should-pyer-know.html" class="btn btn-neutral" title="初级Python开发工程师需要掌握" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+<a href="W003-PEP8.html" class="btn btn-neutral" title="优趣 Python 编码规范整理" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
 </div>
 <hr/>
 <script>

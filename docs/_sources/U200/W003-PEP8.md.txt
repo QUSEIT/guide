@@ -1,9 +1,12 @@
-# PEP8 Python 编码规范整理
+# 优趣 Python 编码规范整理
+
+做*Python*开发时，务必需要遵循良好的规范。参与到现代软件的协作开发过程中，不遵守规范的代码就是一个孤岛，除了自己能容易理解外，阻塞了其他人接受认可，无法发挥其应有的价值；只有规范良好的软件开发过程才可能让团队成员能方便地理解你的思路，或者更轻松与你对接接口，或者更方便地帮助你修复BUG，这样你实现的代码才能持续放大价值。
 
 
-决定开始*Python*之路了，利用业余时间，争取更深入学习*Python*。编程语言不是艺术，而是工作或者说是工具，所以整理并遵循一套编码规范是十分必要的。所以今天下午我根据*PEP 8*整理了一份，以后都照此编码了，还会持续更新。
+这篇文档是基于Python官方推荐的PEP8的编码规范摘要总结，优趣所有Python开发工程师都应该遵守，并不断完善的开发规范。大家在阅读的同时也欢迎不断改进规范。
 
-## PEP8 Python 编码规范
+
+## PEP8 Python 编码规范摘要
 
 一 代码编排
 -----------------
@@ -20,11 +23,7 @@
 
 三 空格的使用
 --------------------
-
-
 总体原则，避免不必要的空格。
-
-
 
 * 1 各种右括号前不要加空格。
 * 2 逗号、冒号、分号前不要加空格。
@@ -38,29 +37,28 @@
 四 注释
 ---------
 
-
 总体原则，错误的注释不如没有注释。所以当一段代码发生变化时，第一件事就是要修改注释！
 注释必须使用英文，最好是完整的句子，首字母大写，句后要有结束符，结束符后跟两个空格，开始下一句。如果是短语，可以省略结束符。
-		
-		
-		
+
 * 1 块注释，在一段代码前增加的注释。在‘#’后加一空格。段落之间以只有‘#’的行间隔。比如：
 
 
-   # Description : Module config.
-   
-   # 
-   
-   # Input : None
-   
-   #
-   
-   # Output : None
-   
+    # Description : Module config.
+    #
+    # Input : None
+    #
+    # Output : None
 
-* 2 行注释，在一句代码后加注释。比如：x = x + 1			# Increment x      但是这种方式尽量少使用。
+* 2 行注释，在一句代码后加注释。
+
+比如：
+
+    x = x + 1			# Increment x
+
+但是这种方式尽量少使用。
 
 * 3 避免无谓的注释。
+
 
 五 文档描述
 --------------
@@ -69,11 +67,11 @@
 * 2 如果docstring要换行，参考如下例子,详见PEP 257
 
 
-"""Return a foobang
+    """Return a foobang
 
-Optional plotz says to frobnicate the bizbaz first.
+    Optional plotz says to frobnicate the bizbaz first.
 
-"""`
+    """
 
 六 命名规范
 ---------------------
@@ -106,60 +104,55 @@ Optional plotz says to frobnicate the bizbaz first.
 * 4 异常中不要使用裸露的except，except后跟具体的exceptions。
 * 5 异常中try的代码尽可能少。比如：
 
-try:
 
-value = collection[key]
-
-except KeyError:
-
-return key_not_found(key)
-
-else:
-
-return handle_value(value)
+    try:
+        value = collection[key]
+    except KeyError:
+        return key_not_found(key)
+    else:
+        return handle_value(value)
 
 
 要优于
 
-try:
+    try:
+        Too broad!
+        return handle_value(collection[key])
 
-Too broad!
-
-return handle_value(collection[key])
-
-except KeyError:
-
-Will also catch KeyError raised by handle_value()
-
-return key_not_found(key)
+    except KeyError:
+        Will also catch KeyError raised by handle_value()
+        return key_not_found(key)
 
 
 * 6 使用startswith() and endswith()代替切片进行序列前缀或后缀的检查。比如：
 
-Yes:  if foo.startswith('bar'):优于
+    Yes:  if foo.startswith('bar'):
 
-No:  if foo[:3] == 'bar':
+优于
+
+    No:  if foo[:3] == 'bar':
 
 
 * 7 使用isinstance()比较对象的类型。比如
 
-Yes:  if isinstance(obj, int): 优于
 
-No:  if type(obj) is type(1):
-
-
-* 8 判断序列空或不空，有如下规则
-
-Yes:  if not seq:
-
-if seq:
+    Yes:  if isinstance(obj, int):
 
 优于
 
-No:  if len(seq)
+    No:  if type(obj) is type(1):
 
-if not len(seq)
+* 8 判断序列空或不空，有如下规则
 
+    Yes:  if not seq:
+
+    if seq:
+
+优于
+
+    No:  if len(seq)
+
+    if not len(seq)
 
 * 9 字符串不要以空格收尾。
 

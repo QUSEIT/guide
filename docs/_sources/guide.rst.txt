@@ -13,6 +13,7 @@ APP小组
    :maxdepth: 1
 
    U200/W002-What-should-pyer-know
+   U200/W003-PEP8
    U200/A001-Javascript-Style
    U200/P001-Product
    U200/P002-Quseit-Django-Authentication-Python
